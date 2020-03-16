@@ -24,6 +24,7 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
+        userid:cc.Integer,
         runway:{
             type:cc.Node,
             default:null
@@ -71,6 +72,9 @@ cc.Class({
 
     onLoad () {
         this.node.opacity = 0;
+        this.userid = cc.sys.localStorage.getItem("id");
+        this.newuser();
+        
     },
 
     start () {
@@ -82,31 +86,58 @@ cc.Class({
         this.showmap();
     },
 
-    showmap:function(){
-        if(this.allfile==null){
-            this.node.runAction(cc.sequence(cc.fadeOut(1.0),cc.director.loadScene("homepage_scene")));
+    newuser:function(){
+        if(this.userid==null){
+            cc.director.loadScene("homepage_scene");
         }else{
-            this.runway.getChildByName("up").getChildByName(this.allfile.uprunway.toString()).active = true;
-            this.runway.getChildByName("down").getChildByName(this.allfile.downrunway.toString()).active = true;
-            if(this.allfile.uprunway>=9&&this.allfile.downrunway>=9){
-                this.road.getChildByName("9-9").active = true;
-            }else if(this.allfile.uprunway>=6&&this.allfile.downrunway>=6){
-                this.road.getChildByName("6-6").active = true;
-            }else if(this.allfile.uprunway>=3&&this.allfile.downrunway>=3){
-                this.road.getChildByName("3-3").active = true;
-            }else{
-                this.road.getChildByName("1-1").active = true;
-            }
-            this.stand.getChildByName(this.allfile.stand.toString()).active = true;
-            this.username.string = this.allfile.name;
-            this.stars.string = this.allfile.stars;
-            this.fuel.progress = this.allfile.fuel / this.allfile.maxfuel;
-            var fuelnumber = this.allfile.fuel.toString() + ' / ' + this.allfile.maxfuel.toString();
-            this.fuelnum.string = fuelnumber;
-            this.passenger.progress = this.allfile.passenger / this.allfile.maxpassenger;
-            var passengernumber = this.allfile.passenger.toString() + ' / ' + this.allfile.maxpassenger.toString();
-            this.passengernum.string = passengernumber;
-            this.coins.string = this.allfile.money;
+            this.downloadUserData();
         }
-    }
+    },
+
+    downloadUserData:function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=1", true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send("id=" + this.userid);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status < 400)) {
+                if (xhr.responseText != 0){
+                    cc.sys.localStorage.setItem("userData",xhr.responseText);
+                }
+            }
+        };
+    },
+
+    uploadUserData:function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=2", true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send("id=" + this.userid + "&userData=" + JSON.stringify(this.allfile));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status < 400)) {
+                if(xhr.responseText == 1){
+                    console.log(1);
+                }
+            }
+        };
+    },
+
+    showmap:function(){
+        this.runway.getChildByName("up").getChildByName(this.allfile.buildings.uprunway.toString()).active = true;
+        this.runway.getChildByName("down").getChildByName(this.allfile.buildings.downrunway.toString()).active = true;
+        if(this.allfile.buildings.uprunway>=9&&this.allfile.buildings.downrunway>=9){
+            this.road.getChildByName("9-9").active = true;
+        }else if(this.allfile.buildings.uprunway>=6&&this.allfile.buildings.downrunway>=6){
+            this.road.getChildByName("6-6").active = true;
+        }else if(this.allfile.buildings.uprunway>=3&&this.allfile.buildings.downrunway>=3){
+            this.road.getChildByName("3-3").active = true;
+        }else{
+            this.road.getChildByName("1-1").active = true;
+        }
+        this.stand.getChildByName(this.allfile.buildings.stand.toString()).active = true;
+        this.username.string = this.allfile.name;
+        this.stars.string = this.allfile.stars;
+        this.coins.string = this.allfile.money;
+    },
+
 });
