@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "warehouse_icon@3x",
+    "texture": "69a777aa-4f67-4725-8f3c-8253007371bb",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      60,
+      69
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      60,
+      69
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "process_background",
+    "texture": "0bacad63-2882-44aa-ab40-545dd83910ac",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      80,
+      17
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      80,
+      17
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

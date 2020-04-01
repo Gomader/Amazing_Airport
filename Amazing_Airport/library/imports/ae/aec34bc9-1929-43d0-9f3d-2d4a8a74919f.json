@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "radar@3x",
+    "texture": "76adb270-e8f0-4bdf-a583-91eb889a6649",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      77,
+      56
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      77,
+      56
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

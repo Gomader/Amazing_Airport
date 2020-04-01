@@ -24,15 +24,47 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
+        allfile:Object,
+        business_flight : {
+            type:cc.Node,
+            default:null
+        },
+        user_flight : {
+            type:cc.Node,
+            default:null
+        },
+        allflight : {
+            type:cc.Node,
+            default:null
+        },
+        shop : {
+            type:cc.Node,
+            default:null
+        },
+        warehouse : {
+            type:cc.Node,
+            default:null
+        },
+        setting : {
+            type:cc.Node,
+            default:null
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
+    },
 
     start () {
 
     },
 
-    // update (dt) {},
+    update (dt) {
+        this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
+        cc.sys.localStorage.setItem("userData",JSON.stringify(this.allfile));
+    },
+
+
 });

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "have_passenger@3x",
+    "texture": "46346416-a3dc-4b85-ab3f-114a135b5513",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      120,
+      52
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      120,
+      52
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

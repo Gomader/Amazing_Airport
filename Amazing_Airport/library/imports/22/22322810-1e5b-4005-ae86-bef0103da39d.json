@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "buildings_icon@3x",
+    "texture": "42bf2433-3573-40c3-829e-691f31ce055c",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      81,
+      71
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      81,
+      71
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

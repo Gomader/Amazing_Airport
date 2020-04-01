@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "radar",
+    "texture": "8d0603e5-29d0-44f2-8847-c5d171a60633",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      26,
+      19
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      26,
+      19
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

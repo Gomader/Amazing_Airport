@@ -37,7 +37,7 @@ cc.Class({
     },
 
     update (dt) {
-        this.node.angle -= 1;
+        this.node.angle -= 2;
         if(this.node.angle==-360){
             this.node.angle = 0;
         };

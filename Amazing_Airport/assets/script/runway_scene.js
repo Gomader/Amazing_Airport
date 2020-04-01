@@ -53,6 +53,14 @@ cc.Class({
             type:cc.Label,
             default:null
         },
+        fuelclock:{
+            type:cc.Node,
+            default:null
+        },
+        fuelclocknumber:{
+            type:cc.Label,
+            default:null
+        },
         passenger:{
             type:cc.ProgressBar,
             default:null
@@ -61,11 +69,23 @@ cc.Class({
             type:cc.Label,
             default:null
         },
+        passengerclock:{
+            type:cc.Node,
+            default:null
+        },
+        passengerclocknumber:{
+            type:cc.Label,
+            default:null
+        },
         coins:{
             type:cc.Label,
             default:null
         },
         allfile:Object,
+        maxfuel:cc.Integer,
+        maxpassenger:cc.Integer,
+        allclock:Object,
+        lefts:Object
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -73,16 +93,33 @@ cc.Class({
     onLoad () {
         this.node.opacity = 0;
         this.userid = cc.sys.localStorage.getItem("id");
+        this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
+        this.allclock = {
+            fuelclock : {
+                runstate:false,
+                timenumber:0
+            },
+            passengerclock : {
+                runstate:false,
+                timenumber:0
+            }
+        },
+        this.lefts = {
+            leftfuel:0,
+            leftpassenger:0
+        }
         this.newuser();
-        
     },
 
     start () {
         this.node.runAction(cc.fadeIn(1.0));
+        this.startclock();
+        this.backtogame();
     },
 
     update (dt) {
         this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
+        cc.sys.localStorage.setItem("lefts",JSON.stringify(this.lefts));
         this.showmap();
     },
 
@@ -102,10 +139,10 @@ cc.Class({
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status < 400)) {
                 if (xhr.responseText != 0){
-                    cc.sys.localStorage.setItem("userData",xhr.responseText);
+                    cc.sys.localStorage.setItem('userData',this.responseText);
                 }
             }
-        };
+        }
     },
 
     uploadUserData:function(){
@@ -119,7 +156,34 @@ cc.Class({
                     console.log(1);
                 }
             }
-        };
+        }
+    },
+
+    backtogame:function(){
+        this.maxfuel = this.allfile.stars + 10;
+        this.maxpassenger = this.allfile.stars * 2 + 20;
+        var leavetime = (Date.parse(new Date()) - cc.sys.localStorage.getItem("time"))/1000;
+        var left = JSON.parse(cc.sys.localStorage.getItem("lefts"));
+        if(left.leftfuel >= this.maxfuel){
+            this.lefts.leftfuel = left.leftfuel;
+        }else{
+            var add = Math.floor(leavetime/60) + left.leftfuel;
+            if(add >= this.maxfuel){
+                this.lefts.leftfuel = this.maxfuel;
+            }else{
+                this.lefts.leftfuel = add;
+            }
+        }
+        if(left.leftpassenger >= this.maxpassenger){
+            this.lefts.leftpassenger = left.leftpassenger;
+        }else{
+            var add = Math.floor(leavetime/60) + left.leftpassenger;
+            if(add >= this.maxpassenger){
+                this.lefts.leftpassenger = this.maxpassenger;
+            }else{
+                this.lefts.leftpassenger = add;
+            }
+        }
     },
 
     showmap:function(){
@@ -138,6 +202,62 @@ cc.Class({
         this.username.string = this.allfile.name;
         this.stars.string = this.allfile.stars;
         this.coins.string = this.allfile.money;
+        this.maxfuel = this.allfile.stars + 10;
+        this.maxpassenger = this.allfile.stars * 2 + 20;
+        this.fuel.progress = this.lefts.leftfuel / this.maxfuel;
+        this.fuelnum.string = this.lefts.leftfuel.toString() + "/" + this.maxfuel.toString();
+        this.passenger.progress = this.lefts.leftpassenger / this.maxpassenger;
+        this.passengernum.string = this.lefts.leftpassenger.toString() + "/" + this.maxpassenger.toString();
+        if (this.lefts.leftfuel < this.maxfuel && this.allclock.fuelclock.runstate == false){
+            this.allclock.fuelclock.runstate = true;
+            this.fuelclock.active = true;
+        }
+        if (this.lefts.leftpassenger < this.maxpassenger && this.allclock.passengerclock.runstate == false){
+            this.allclock.passengerclock.runstate = true;
+            this.passengerclock.active = true;
+        }
     },
 
+    startclock:function(){
+        this.callback = function(){
+            cc.sys.localStorage.setItem("time",Date.parse(new Date()));
+            if(this.allclock.fuelclock.runstate==true){
+                this.allclock.fuelclock.timenumber += 1;
+                if(this.allclock.fuelclock.timenumber == 60){
+                    this.allclock.fuelclock.timenumber = 0;
+                    this.lefts.leftfuel += 1;
+                }
+                if(this.allclock.fuelclock.timenumber<10){
+                    this.fuelclocknumber.string = "0" + this.allclock.fuelclock.timenumber.toString();
+                }else{
+                    this.fuelclocknumber.string = this.allclock.fuelclock.timenumber.toString();
+                }
+                if(this.lefts.leftfuel>=this.maxfuel){
+                    this.allclock.fuelclock.runstate = false;
+                    this.allclock.fuelclock.timenumber = 0;
+                    this.fuelclock.active = false;
+                }
+            }
+            if(this.allclock.passengerclock.runstate==true){
+                this.allclock.passengerclock.timenumber += 1;
+                if(this.allclock.passengerclock.timenumber == 60){
+                    this.allclock.passengerclock.timenumber = 0;
+                    this.lefts.leftpassenger += 1;
+                }
+                if(this.allclock.passengerclock.timenumber<10){
+                    this.passengerclocknumber.string = "0" + this.allclock.passengerclock.timenumber.toString();
+                }else{
+                    this.passengerclocknumber.string = this.allclock.passengerclock.timenumber.toString();
+                }
+                if(this.lefts.leftpassenger>=this.maxpassenger){
+                    this.allclock.passengerclock.runstate = false;
+                    this.allclock.passengerclock.timenumber = 0;
+                    this.passengerclock.active = false;
+                }
+            }
+        }
+        this.schedule(function(){
+            this.callback();
+        },1)
+    },
 });

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "fuel_icon",
+    "texture": "4d8e766e-b62a-4689-8d33-858e8b765423",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      22,
+      29
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      22,
+      29
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "passenger_icon@2x",
+    "texture": "91931e1f-7073-43c1-a67f-36c2567c06fc",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      60,
+      59
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      60,
+      59
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
