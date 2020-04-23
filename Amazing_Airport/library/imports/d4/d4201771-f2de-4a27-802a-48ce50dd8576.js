@@ -15,43 +15,7 @@ var userdata = require('userdata');
 cc.Class({
   "extends": cc.Component,
   properties: {
-    // foo: {
-    //     // ATTRIBUTES:
-    //     default: null,        // The default value will be used only when the component attaching
-    //                           // to a node for the first time
-    //     type: cc.SpriteFrame, // optional, default is typeof default
-    //     serializable: true,   // optional, default is true
-    // },
-    // bar: {
-    //     get () {
-    //         return this._bar;
-    //     },
-    //     set (value) {
-    //         this._bar = value;
-    //     }
-    // },
-    allfile: Object,
-    business_flight: {
-      type: cc.Node,
-      "default": null
-    },
-    user_flight: {
-      type: cc.Node,
-      "default": null
-    },
-    allflight: {
-      type: cc.Node,
-      "default": null
-    },
-    shop: {
-      type: cc.Node,
-      "default": null
-    },
-    warehouse: {
-      type: cc.Node,
-      "default": null
-    },
-    setting: {
+    my_flights_window: {
       type: cc.Node,
       "default": null
     }
@@ -61,8 +25,12 @@ cc.Class({
   start: function start() {},
   update: function update(dt) {},
   showallflights: function showallflights() {
-    this.allflight.active = true;
-  }
+    this.my_flights_window.active = true;
+  },
+  closeallflights: function closeallflights() {
+    this.my_flights_window.active = false;
+  },
+  ownairplanefly: function ownairplanefly() {}
 });
 
 cc._RF.pop();

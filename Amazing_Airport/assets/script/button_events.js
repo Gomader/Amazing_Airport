@@ -11,46 +11,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-        allfile:Object,
-        business_flight : {
+        my_flights_window:{
             type:cc.Node,
             default:null
-        },
-        user_flight : {
-            type:cc.Node,
-            default:null
-        },
-        allflight : {
-            type:cc.Node,
-            default:null
-        },
-        shop : {
-            type:cc.Node,
-            default:null
-        },
-        warehouse : {
-            type:cc.Node,
-            default:null
-        },
-        setting : {
-            type:cc.Node,
-            default:null
-        },
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -67,6 +31,12 @@ cc.Class({
         
     },
     showallflights(){
-        this.allflight.active = true
+        this.my_flights_window.active = true;   
+    },
+    closeallflights(){
+        this.my_flights_window.active = false;
+    },
+    ownairplanefly(){
+        
     }
 });

@@ -109,16 +109,16 @@ cc.Class({
             leftpassenger:0
         }
         this.newuser();
+        this.backtogame(cc.sys.localStorage.getItem("stars"));
     },
 
     start () {
         this.node.runAction(cc.fadeIn(1.0));
         this.startclock();
-        this.backtogame();
+        this.backtogame(cc.sys.localStorage.getItem("stars"));
     },
 
     update (dt) {
-        cc.sys.localStorage.setItem("lefts",JSON.stringify(userdata.lefts));
         this.showmap();
     },
 
@@ -140,7 +140,6 @@ cc.Class({
                 if (xhr.responseText != 0){
                     cc.sys.localStorage.setItem('userData',xhr.responseText);
                     userdata.allfile = JSON.parse(xhr.responseText);
-                    userdata.lefts = JSON.parse(cc.sys.localStorage.getItem("lefts"));
                 }
             }
         }
@@ -160,27 +159,30 @@ cc.Class({
         }
     },
 
-    backtogame:function(){
-        this.maxfuel = userdata.allfile.stars + 10;
-        this.maxpassenger = userdata.allfile.stars * 2 + 20;
+    backtogame:function(stars){
+        var maxfuel = stars + 10;
+        var maxpassenger = stars * 2 + 20;
         var leavetime = (Date.parse(new Date()) - cc.sys.localStorage.getItem("time"))/1000;
+        console.log(leavetime);
         var left = JSON.parse(cc.sys.localStorage.getItem("lefts"));
-        if(left.leftfuel >= this.maxfuel){
+        console.log(left);
+        if(left.leftfuel >= maxfuel){
             userdata.lefts.leftfuel = left.leftfuel;
         }else{
             var add = Math.floor(leavetime/60) + left.leftfuel;
-            if(add >= this.maxfuel){
-                userdata.lefts.leftfuel = this.maxfuel;
+            
+            if(add >= maxfuel){
+                userdata.lefts.leftfuel = maxfuel;
             }else{
                 userdata.lefts.leftfuel = add;
             }
         }
-        if(left.leftpassenger >= this.maxpassenger){
+        if(left.leftpassenger >= maxpassenger){
             userdata.lefts.leftpassenger = left.leftpassenger;
         }else{
             var add = Math.floor(leavetime/60) + left.leftpassenger;
-            if(add >= this.maxpassenger){
-                userdata.lefts.leftpassenger = this.maxpassenger;
+            if(add >= maxpassenger){
+                userdata.lefts.leftpassenger = maxpassenger;
             }else{
                 userdata.lefts.leftpassenger = add;
             }
@@ -188,7 +190,6 @@ cc.Class({
     },
 
     showmap:function(){
-        console.log(userdata.allfile.buildings);
         this.runway.getChildByName("up").getChildByName(userdata.allfile.buildings.uprunway.toString()).active = true;
         this.runway.getChildByName("down").getChildByName(userdata.allfile.buildings.downrunway.toString()).active = true;
         if(userdata.allfile.buildings.uprunway>=9&&userdata.allfile.buildings.downrunway>=9){
@@ -217,6 +218,9 @@ cc.Class({
         if (userdata.lefts.leftpassenger < this.maxpassenger && this.allclock.passengerclock.runstate == false){
             this.allclock.passengerclock.runstate = true;
             this.passengerclock.active = true;
+        }
+        for(var o in userdata.allfile.airplane){
+            
         }
     },
 
@@ -259,6 +263,8 @@ cc.Class({
             }
             if(this.time == 60){
                 this.uploadUserData();
+                cc.sys.localStorage.setItem("lefts",JSON.stringify(userdata.lefts));
+                cc.sys.localStorage.setItem("stars",userdata.allfile.stars);
                 this.time == 0
             }else{
                 this.time += 1;
