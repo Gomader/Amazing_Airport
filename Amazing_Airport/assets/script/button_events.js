@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+var userdata = require('userdata');
+
 cc.Class({
     extends: cc.Component,
 
@@ -48,13 +50,13 @@ cc.Class({
         setting : {
             type:cc.Node,
             default:null
-        }
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
+        
     },
 
     start () {
@@ -62,9 +64,9 @@ cc.Class({
     },
 
     update (dt) {
-        this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
-        cc.sys.localStorage.setItem("userData",JSON.stringify(this.allfile));
+        
     },
-
-
+    showallflights(){
+        this.allflight.active = true
+    }
 });

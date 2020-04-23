@@ -10,6 +10,8 @@ cc._RF.push(module, '660dfXmAJ1O54O3BLVKKhKx', 'runway_scene');
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+var userdata = require('userdata');
+
 cc.Class({
   "extends": cc.Component,
   properties: {
@@ -85,17 +87,15 @@ cc.Class({
       type: cc.Label,
       "default": null
     },
-    allfile: Object,
     maxfuel: cc.Integer,
     maxpassenger: cc.Integer,
     allclock: Object,
-    lefts: Object
+    time: cc.Integer
   },
   // LIFE-CYCLE CALLBACKS:
   onLoad: function onLoad() {
     this.node.opacity = 0;
     this.userid = cc.sys.localStorage.getItem("id");
-    this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
     this.allclock = {
       fuelclock: {
         runstate: false,
@@ -105,7 +105,7 @@ cc.Class({
         runstate: false,
         timenumber: 0
       }
-    }, this.lefts = {
+    }, userdata.lefts = {
       leftfuel: 0,
       leftpassenger: 0
     };
@@ -117,8 +117,7 @@ cc.Class({
     this.backtogame();
   },
   update: function update(dt) {
-    this.allfile = JSON.parse(cc.sys.localStorage.getItem('userData'));
-    cc.sys.localStorage.setItem("lefts", JSON.stringify(this.lefts));
+    cc.sys.localStorage.setItem("lefts", JSON.stringify(userdata.lefts));
     this.showmap();
   },
   newuser: function newuser() {
@@ -137,7 +136,9 @@ cc.Class({
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
         if (xhr.responseText != 0) {
-          cc.sys.localStorage.setItem('userData', this.responseText);
+          cc.sys.localStorage.setItem('userData', xhr.responseText);
+          userdata.allfile = JSON.parse(xhr.responseText);
+          userdata.lefts = JSON.parse(cc.sys.localStorage.getItem("lefts"));
         }
       }
     };
@@ -146,7 +147,7 @@ cc.Class({
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=2", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("id=" + this.userid + "&userData=" + JSON.stringify(this.allfile));
+    xhr.send("id=" + this.userid + "&userData=" + JSON.stringify(userdata.allfile));
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
@@ -157,66 +158,67 @@ cc.Class({
     };
   },
   backtogame: function backtogame() {
-    this.maxfuel = this.allfile.stars + 10;
-    this.maxpassenger = this.allfile.stars * 2 + 20;
+    this.maxfuel = userdata.allfile.stars + 10;
+    this.maxpassenger = userdata.allfile.stars * 2 + 20;
     var leavetime = (Date.parse(new Date()) - cc.sys.localStorage.getItem("time")) / 1000;
     var left = JSON.parse(cc.sys.localStorage.getItem("lefts"));
 
     if (left.leftfuel >= this.maxfuel) {
-      this.lefts.leftfuel = left.leftfuel;
+      userdata.lefts.leftfuel = left.leftfuel;
     } else {
       var add = Math.floor(leavetime / 60) + left.leftfuel;
 
       if (add >= this.maxfuel) {
-        this.lefts.leftfuel = this.maxfuel;
+        userdata.lefts.leftfuel = this.maxfuel;
       } else {
-        this.lefts.leftfuel = add;
+        userdata.lefts.leftfuel = add;
       }
     }
 
     if (left.leftpassenger >= this.maxpassenger) {
-      this.lefts.leftpassenger = left.leftpassenger;
+      userdata.lefts.leftpassenger = left.leftpassenger;
     } else {
       var add = Math.floor(leavetime / 60) + left.leftpassenger;
 
       if (add >= this.maxpassenger) {
-        this.lefts.leftpassenger = this.maxpassenger;
+        userdata.lefts.leftpassenger = this.maxpassenger;
       } else {
-        this.lefts.leftpassenger = add;
+        userdata.lefts.leftpassenger = add;
       }
     }
   },
   showmap: function showmap() {
-    this.runway.getChildByName("up").getChildByName(this.allfile.buildings.uprunway.toString()).active = true;
-    this.runway.getChildByName("down").getChildByName(this.allfile.buildings.downrunway.toString()).active = true;
+    console.log(userdata.allfile.buildings);
+    this.runway.getChildByName("up").getChildByName(userdata.allfile.buildings.uprunway.toString()).active = true;
+    this.runway.getChildByName("down").getChildByName(userdata.allfile.buildings.downrunway.toString()).active = true;
 
-    if (this.allfile.buildings.uprunway >= 9 && this.allfile.buildings.downrunway >= 9) {
+    if (userdata.allfile.buildings.uprunway >= 9 && userdata.allfile.buildings.downrunway >= 9) {
       this.road.getChildByName("9-9").active = true;
-    } else if (this.allfile.buildings.uprunway >= 6 && this.allfile.buildings.downrunway >= 6) {
+    } else if (userdata.allfile.buildings.uprunway >= 6 && userdata.allfile.buildings.downrunway >= 6) {
       this.road.getChildByName("6-6").active = true;
-    } else if (this.allfile.buildings.uprunway >= 3 && this.allfile.buildings.downrunway >= 3) {
+    } else if (userdata.allfile.buildings.uprunway >= 3 && userdata.allfile.buildings.downrunway >= 3) {
       this.road.getChildByName("3-3").active = true;
     } else {
       this.road.getChildByName("1-1").active = true;
     }
 
-    this.stand.getChildByName(this.allfile.buildings.stand.toString()).active = true;
-    this.username.string = this.allfile.name;
-    this.stars.string = this.allfile.stars;
-    this.coins.string = this.allfile.money;
-    this.maxfuel = this.allfile.stars + 10;
-    this.maxpassenger = this.allfile.stars * 2 + 20;
-    this.fuel.progress = this.lefts.leftfuel / this.maxfuel;
-    this.fuelnum.string = this.lefts.leftfuel.toString() + "/" + this.maxfuel.toString();
-    this.passenger.progress = this.lefts.leftpassenger / this.maxpassenger;
-    this.passengernum.string = this.lefts.leftpassenger.toString() + "/" + this.maxpassenger.toString();
+    this.stand.getChildByName(userdata.allfile.buildings.stand.toString()).active = true;
+    this.username.string = userdata.allfile.name;
+    this.stars.string = userdata.allfile.stars;
+    this.coins.string = userdata.allfile.money;
+    this.maxfuel = userdata.allfile.stars + 10;
+    this.maxpassenger = userdata.allfile.stars * 2 + 20;
+    this.fuel.progress = userdata.lefts.leftfuel / this.maxfuel;
+    this.fuelnum.string = userdata.lefts.leftfuel.toString() + "/" + this.maxfuel.toString();
+    this.passenger.progress = userdata.lefts.leftpassenger / this.maxpassenger;
+    this.passengernum.string = userdata.lefts.leftpassenger.toString() + "/" + this.maxpassenger.toString();
 
-    if (this.lefts.leftfuel < this.maxfuel && this.allclock.fuelclock.runstate == false) {
+    if (userdata.lefts.leftfuel < this.maxfuel && this.allclock.fuelclock.runstate == false) {
       this.allclock.fuelclock.runstate = true;
       this.fuelclock.active = true;
     }
 
-    if (this.lefts.leftpassenger < this.maxpassenger && this.allclock.passengerclock.runstate == false) {
+    if (userdata.lefts.leftpassenger < this.maxpassenger && this.allclock.passengerclock.runstate == false) {
       this.allclock.passengerclock.runstate = true;
       this.passengerclock.active = true;
     }
@@ -230,7 +232,7 @@ cc.Class({
 
         if (this.allclock.fuelclock.timenumber == 60) {
           this.allclock.fuelclock.timenumber = 0;
-          this.lefts.leftfuel += 1;
+          userdata.lefts.leftfuel += 1;
         }
 
         if (this.allclock.fuelclock.timenumber < 10) {
@@ -239,7 +241,7 @@ cc.Class({
           this.fuelclocknumber.string = this.allclock.fuelclock.timenumber.toString();
         }
 
-        if (this.lefts.leftfuel >= this.maxfuel) {
+        if (userdata.lefts.leftfuel >= this.maxfuel) {
           this.allclock.fuelclock.runstate = false;
           this.allclock.fuelclock.timenumber = 0;
           this.fuelclock.active = false;
@@ -251,7 +253,7 @@ cc.Class({
 
         if (this.allclock.passengerclock.timenumber == 60) {
           this.allclock.passengerclock.timenumber = 0;
-          this.lefts.leftpassenger += 1;
+          userdata.lefts.leftpassenger += 1;
         }
 
         if (this.allclock.passengerclock.timenumber < 10) {
@@ -260,11 +262,18 @@ cc.Class({
           this.passengerclocknumber.string = this.allclock.passengerclock.timenumber.toString();
         }
 
-        if (this.lefts.leftpassenger >= this.maxpassenger) {
+        if (userdata.lefts.leftpassenger >= this.maxpassenger) {
           this.allclock.passengerclock.runstate = false;
           this.allclock.passengerclock.timenumber = 0;
           this.passengerclock.active = false;
         }
+      }
+
+      if (this.time == 60) {
+        this.uploadUserData();
+        this.time == 0;
+      } else {
+        this.time += 1;
       }
     };
 
