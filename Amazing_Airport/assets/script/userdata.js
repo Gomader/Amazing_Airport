@@ -3,6 +3,8 @@ cc.Class({
 
     properties: {
         allfile:Object,
-        lefts:Object
+        lefts:Object,
+        airplanedata:Array,
+        standstate:Array
     },
 });

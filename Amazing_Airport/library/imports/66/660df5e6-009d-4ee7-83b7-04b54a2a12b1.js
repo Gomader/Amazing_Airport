@@ -4,32 +4,11 @@ cc._RF.push(module, '660dfXmAJ1O54O3BLVKKhKx', 'runway_scene');
 
 "use strict";
 
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 var userdata = require('userdata');
 
 cc.Class({
   "extends": cc.Component,
   properties: {
-    // foo: {
-    //     // ATTRIBUTES:
-    //     default: null,        // The default value will be used only when the component attaching
-    //                           // to a node for the first time
-    //     type: cc.SpriteFrame, // optional, default is typeof default
-    //     serializable: true,   // optional, default is true
-    // },
-    // bar: {
-    //     get () {
-    //         return this._bar;
-    //     },
-    //     set (value) {
-    //         this._bar = value;
-    //     }
-    // },
     userid: cc.Integer,
     runway: {
       type: cc.Node,
@@ -40,6 +19,10 @@ cc.Class({
       "default": null
     },
     stand: {
+      type: cc.Node,
+      "default": null
+    },
+    airplaneOnStand: {
       type: cc.Node,
       "default": null
     },
@@ -115,7 +98,6 @@ cc.Class({
   start: function start() {
     this.node.runAction(cc.fadeIn(1.0));
     this.startclock();
-    this.backtogame(cc.sys.localStorage.getItem("stars"));
   },
   update: function update(dt) {
     this.showmap();
@@ -124,7 +106,7 @@ cc.Class({
     if (this.userid == null) {
       cc.director.loadScene("homepage_scene");
     } else {
-      this.downloadUserData();
+      this.inits();
     }
   },
   downloadUserData: function downloadUserData() {
@@ -136,7 +118,6 @@ cc.Class({
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
         if (xhr.responseText != 0) {
-          cc.sys.localStorage.setItem('userData', xhr.responseText);
           userdata.allfile = JSON.parse(xhr.responseText);
         }
       }
@@ -156,13 +137,53 @@ cc.Class({
       }
     };
   },
+  downloadAirplaneData: function downloadAirplaneData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=3", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("id=" + this.userid);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
+        if (xhr.responseText != 0) {
+          var res = eval(xhr.responseText);
+          var airplanelist = [];
+
+          for (var i in res) {
+            airplanelist.push(res[i]);
+          }
+
+          userdata.airplanedata = airplanelist;
+        }
+      }
+    };
+  },
+  uploadAirplaneData: function uploadAirplaneData() {
+    var list = [];
+
+    for (var i in userdata.airplanedata) {
+      list.push(JSON.stringify(userdata.airplanedata[i]));
+    }
+
+    var data = "[" + list.join(',') + "]";
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=4", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("id=" + this.userid + "&userData=" + data);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
+        if (xhr.responseText == 1) {
+          console.log(1);
+        }
+      }
+    };
+  },
   backtogame: function backtogame(stars) {
     var maxfuel = stars + 10;
     var maxpassenger = stars * 2 + 20;
     var leavetime = (Date.parse(new Date()) - cc.sys.localStorage.getItem("time")) / 1000;
-    console.log(leavetime);
     var left = JSON.parse(cc.sys.localStorage.getItem("lefts"));
-    console.log(left);
 
     if (left.leftfuel >= maxfuel) {
       userdata.lefts.leftfuel = left.leftfuel;
@@ -187,6 +208,12 @@ cc.Class({
         userdata.lefts.leftpassenger = add;
       }
     }
+
+    cc.sys.localStorage.setItem("lefts", JSON.stringify(userdata.lefts));
+  },
+  inits: function inits() {
+    this.downloadUserData();
+    this.downloadAirplaneData();
   },
   showmap: function showmap() {
     this.runway.getChildByName("up").getChildByName(userdata.allfile.buildings.uprunway.toString()).active = true;
@@ -223,7 +250,11 @@ cc.Class({
       this.passengerclock.active = true;
     }
 
-    for (var o in userdata.allfile.airplane) {}
+    for (var o in userdata.airplanedata) {
+      if (userdata.airplanedata[o].isflying == 'false') {
+        this.airplaneOnStand.getChildByName(o.toString()).getChildByName(userdata.airplanedata[o].level.toString()).active = true;
+      }
+    }
   },
   startclock: function startclock() {
     this.callback = function () {
