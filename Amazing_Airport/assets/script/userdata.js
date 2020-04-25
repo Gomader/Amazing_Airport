@@ -5,6 +5,7 @@ cc.Class({
         allfile:Object,
         lefts:Object,
         airplanedata:Array,
-        standstate:Array
+        standstate:Array,
+        runwaystate:Array
     },
 });

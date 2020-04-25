@@ -91,6 +91,7 @@ cc.Class({
             leftfuel:0,
             leftpassenger:0
         }
+        userdata.runwaystate = [false,false];
         this.newuser();
         this.backtogame(cc.sys.localStorage.getItem("stars"));
     },
@@ -263,7 +264,9 @@ cc.Class({
 
     startclock:function(){
         this.callback = function(){
+
             cc.sys.localStorage.setItem("time",Date.parse(new Date()));
+
             if(this.allclock.fuelclock.runstate==true){
                 this.allclock.fuelclock.timenumber += 1;
                 if(this.allclock.fuelclock.timenumber == 60){
@@ -281,6 +284,7 @@ cc.Class({
                     this.fuelclock.active = false;
                 }
             }
+
             if(this.allclock.passengerclock.runstate==true){
                 this.allclock.passengerclock.timenumber += 1;
                 if(this.allclock.passengerclock.timenumber == 60){
@@ -298,6 +302,7 @@ cc.Class({
                     this.passengerclock.active = false;
                 }
             }
+
             if(this.time == 60){
                 this.uploadUserData();
                 cc.sys.localStorage.setItem("lefts",JSON.stringify(userdata.lefts));
@@ -306,9 +311,23 @@ cc.Class({
             }else{
                 this.time += 1;
             }
+
+            for(var o in userdata.airplanedata){
+                if(userdata.airplanedata[o].endtime<=(Date.parse(new Date())/1000)){
+                    this.playloadaction(o);
+                }
+            }
         }
         this.schedule(function(){
             this.callback();
         },1)
     },
+
+    playloadaction:function(o){//here I have not write the animation,if done, can let follow codes to be a button
+        userdata.airplanedata[o].destination = 'null';
+        userdata.airplanedata[o].endtime = 0;
+        userdata.airplanedata[o].isflying = 'false';
+        userdata.allfile.money += userdata.airplanedata[o].reward;
+        userdata.airplanedata[o].reward = 0;
+    }
 });

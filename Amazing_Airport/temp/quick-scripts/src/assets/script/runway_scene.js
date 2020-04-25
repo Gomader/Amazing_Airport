@@ -92,6 +92,7 @@ cc.Class({
       leftfuel: 0,
       leftpassenger: 0
     };
+    userdata.runwaystate = [false, false];
     this.newuser();
     this.backtogame(cc.sys.localStorage.getItem("stars"));
   },
@@ -326,11 +327,24 @@ cc.Class({
       } else {
         this.time += 1;
       }
+
+      for (var o in userdata.airplanedata) {
+        if (userdata.airplanedata[o].endtime <= Date.parse(new Date()) / 1000) {
+          this.playloadaction(o);
+        }
+      }
     };
 
     this.schedule(function () {
       this.callback();
     }, 1);
+  },
+  playloadaction: function playloadaction(o) {
+    userdata.airplanedata[o].destination = 'null';
+    userdata.airplanedata[o].endtime = 0;
+    userdata.airplanedata[o].isflying = 'false';
+    userdata.allfile.money += userdata.airplanedata[o].reward;
+    userdata.airplanedata[o].reward = 0;
   }
 });
 
