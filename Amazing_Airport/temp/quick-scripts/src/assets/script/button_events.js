@@ -24,7 +24,7 @@ cc.Class({
   onLoad: function onLoad() {},
   start: function start() {},
   update: function update(dt) {},
-  showallflights: function showallflights() {
+  showallflights: function showallflights(event, customEvenData) {
     this.my_flights_window.active = true;
   },
   closeallflights: function closeallflights() {

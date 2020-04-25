@@ -30,7 +30,7 @@ cc.Class({
     update (dt) {
         
     },
-    showallflights(){
+    showallflights(event,customEvenData){
         this.my_flights_window.active = true;   
     },
     closeallflights(){
