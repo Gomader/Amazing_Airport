@@ -18,6 +18,7 @@ require('./assets/script/radar_animation');
 require('./assets/script/runway_scene');
 require('./assets/script/stand');
 require('./assets/script/userdata');
+require('./assets/script/warehouse');
 
                     }
                     if (nodeEnv) {

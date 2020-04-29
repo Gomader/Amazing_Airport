@@ -97,9 +97,8 @@ cc.Class({
     },
 
     start () {
-        this.node.runAction(cc.fadeIn(1.0));
         this.startclock();
-
+        this.node.runAction(cc.fadeIn(1.0));
     },
 
     update (dt) {
@@ -116,7 +115,7 @@ cc.Class({
 
     downloadUserData:function(){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=1", true);
+        xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=1", true);
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhr.send("id=" + this.userid);
         xhr.onreadystatechange = function () {
@@ -131,7 +130,7 @@ cc.Class({
 
     uploadUserData:function(){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=2", true);
+        xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=2", true);
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhr.send("id=" + this.userid + "&userData=" + JSON.stringify(userdata.allfile));
         xhr.onreadystatechange = function () {
@@ -145,7 +144,7 @@ cc.Class({
 
     downloadAirplaneData:function(){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=3", true);
+        xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=3", true);
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhr.send("id=" + this.userid);
         xhr.onreadystatechange = function () {
@@ -170,7 +169,7 @@ cc.Class({
         }
         var data = "[" + list.join(',') + "]";
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=4", true);
+        xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=4", true);
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhr.send("id=" + this.userid + "&userData=" + data);
         xhr.onreadystatechange = function () {
@@ -266,6 +265,8 @@ cc.Class({
         this.callback = function(){
 
             cc.sys.localStorage.setItem("time",Date.parse(new Date()));
+
+            this.uploadAirplaneData();
 
             if(this.allclock.fuelclock.runstate==true){
                 this.allclock.fuelclock.timenumber += 1;

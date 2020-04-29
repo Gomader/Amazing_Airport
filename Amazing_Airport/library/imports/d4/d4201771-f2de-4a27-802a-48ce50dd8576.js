@@ -19,28 +19,30 @@ cc.Class({
       type: cc.Node,
       "default": null
     },
-    level_one: cc.SpriteFrame,
-    level_two: cc.SpriteFrame,
-    level_three: cc.SpriteFrame,
-    level_four: cc.SpriteFrame,
-    level_five: cc.SpriteFrame,
-    level_six: cc.SpriteFrame,
-    level_seven: cc.SpriteFrame,
-    level_eight: cc.SpriteFrame,
-    level_nine: cc.SpriteFrame
+    warehouse_window: {
+      type: cc.Node,
+      "default": null
+    }
   },
   // LIFE-CYCLE CALLBACKS:
   onLoad: function onLoad() {},
   start: function start() {},
   update: function update(dt) {},
-  showallflights: function showallflights(event, customEvenData) {
+  showallflights: function showallflights() {
     this.my_flights_window.active = true;
   },
   closeallflights: function closeallflights() {
     this.my_flights_window.active = false;
   },
+  showwarehouse: function showwarehouse() {
+    this.warehouse_window.active = true;
+  },
+  closewarehouse: function closewarehouse() {
+    this.warehouse_window.active = false;
+  },
   ownairplanefly: function ownairplanefly() {},
   fly: function fly(event, customEventData) {
+    this.my_flights_window.active = false;
     var go = 0;
 
     if (userdata.lefts.leftfuel >= customEventData.fuel && userdata.lefts.leftpassenger >= customEventData.passenger) {
@@ -59,8 +61,11 @@ cc.Class({
     } else {}
 
     if (go == 0) {
-      console.log("You dont have landing airplane");
+      console.log("You dont have landing airplane"); //here can make a new window
     }
+  },
+  sellairplane: function sellairplane(event, customEventData) {
+    userdata.airplanedata.splice(customEventData.n, 1);
   }
 });
 

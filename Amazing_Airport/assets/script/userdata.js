@@ -6,6 +6,6 @@ cc.Class({
         lefts:Object,
         airplanedata:Array,
         standstate:Array,
-        runwaystate:Array
+        runwaystate:Array,
     },
 });

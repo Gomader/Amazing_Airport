@@ -97,8 +97,8 @@ cc.Class({
     this.backtogame(cc.sys.localStorage.getItem("stars"));
   },
   start: function start() {
-    this.node.runAction(cc.fadeIn(1.0));
     this.startclock();
+    this.node.runAction(cc.fadeIn(1.0));
   },
   update: function update(dt) {
     this.showmap();
@@ -112,7 +112,7 @@ cc.Class({
   },
   downloadUserData: function downloadUserData() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=1", true);
+    xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=1", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("id=" + this.userid);
 
@@ -127,7 +127,7 @@ cc.Class({
   },
   uploadUserData: function uploadUserData() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=2", true);
+    xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=2", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("id=" + this.userid + "&userData=" + JSON.stringify(userdata.allfile));
 
@@ -141,7 +141,7 @@ cc.Class({
   },
   downloadAirplaneData: function downloadAirplaneData() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=3", true);
+    xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=3", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("id=" + this.userid);
 
@@ -170,7 +170,7 @@ cc.Class({
 
     var data = "[" + list.join(',') + "]";
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=4", true);
+    xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=4", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("id=" + this.userid + "&userData=" + data);
 
@@ -276,6 +276,7 @@ cc.Class({
   startclock: function startclock() {
     this.callback = function () {
       cc.sys.localStorage.setItem("time", Date.parse(new Date()));
+      this.uploadAirplaneData();
 
       if (this.allclock.fuelclock.runstate == true) {
         this.allclock.fuelclock.timenumber += 1;
@@ -340,6 +341,7 @@ cc.Class({
     }, 1);
   },
   playloadaction: function playloadaction(o) {
+    //here I have not write the animation,if done, can let follow codes to be a button
     userdata.airplanedata[o].destination = 'null';
     userdata.airplanedata[o].endtime = 0;
     userdata.airplanedata[o].isflying = 'false';

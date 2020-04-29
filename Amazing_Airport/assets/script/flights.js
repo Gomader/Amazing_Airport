@@ -87,8 +87,6 @@ cc.Class({
         
             var button = a.getChildByName("fly").getComponent(cc.Button);
             button.clickEvents.push(clickEventHandler);
-
-            a.getChildByName("fly").getComponent(cc.Button)
             a.y -= o*350;
             a.active = true;
             this.node.addChild(a);

@@ -1445,8 +1445,8 @@
     "relativePath": "scenes/homepage_scene.fire"
   },
   "b7049ff1-4474-4759-b435-e0a79c81e2f6": {
-    "asset": 1587838014949,
-    "meta": 1587838014960,
+    "asset": 1588173028253,
+    "meta": 1588173028267,
     "relativePath": "scenes/runway_scene.fire"
   },
   "3e2dbe6d-86df-439f-8808-e7bbe7d7f302": {
@@ -1989,24 +1989,74 @@
     "meta": 1587829069776,
     "relativePath": "script/stand.js"
   },
-  "6d15f882-7309-4b7e-8b82-5f7765dd5a1c": {
-    "asset": 1587841123792,
-    "meta": 1587841177719,
-    "relativePath": "script/userdata.js"
+  "f75c463e-db3e-49eb-aca5-daf81f076652": {
+    "asset": 1588166851686,
+    "meta": 1588166870240,
+    "relativePath": "res/images/background/goods_background.png"
   },
-  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
-    "asset": 1587841304242,
-    "meta": 1587841549046,
-    "relativePath": "script/runway_scene.js"
+  "bc9f798f-d42e-4d3a-90a4-9b796749cab3": {
+    "asset": 1588166851686,
+    "meta": 1588166870241,
+    "relativePath": "res/images/background/goods_background@2x.png"
   },
-  "d4201771-f2de-4a27-802a-48ce50dd8576": {
-    "asset": 1587842512127,
-    "meta": 1587842515980,
-    "relativePath": "script/button_events.js"
+  "13585e92-7ffd-4d1e-80c5-805372ce2895": {
+    "asset": 1588166851687,
+    "meta": 1588166870252,
+    "relativePath": "res/images/background/goods_background@3x.png"
+  },
+  "9cd30cc6-5d82-4139-8124-6f99a5624e9b": {
+    "asset": 1588167655714,
+    "meta": 1588167657679,
+    "relativePath": "res/images/icons/bottons/btn4_normal@2x.png"
+  },
+  "b9bdbaca-9afd-4230-b8cb-ebcf557f2fb0": {
+    "asset": 1588167655858,
+    "meta": 1588167657680,
+    "relativePath": "res/images/icons/bottons/btn4_normal.png"
+  },
+  "2891805d-59c7-41b2-b2d8-97168eaca471": {
+    "asset": 1588167655559,
+    "meta": 1588167657691,
+    "relativePath": "res/images/icons/bottons/btn4_normal@3x.png"
+  },
+  "8292edde-e1f8-4511-b908-eab09e8efc75": {
+    "asset": 1588167616525,
+    "meta": 1588167657692,
+    "relativePath": "res/images/icons/bottons/btn4_onclick.png"
+  },
+  "ceb6cd70-9870-4524-844c-b1922c01cb79": {
+    "asset": 1588167616369,
+    "meta": 1588167657702,
+    "relativePath": "res/images/icons/bottons/btn4_onclick@2x.png"
+  },
+  "20d63591-5e33-4201-b938-9970b536a1cc": {
+    "asset": 1588167616207,
+    "meta": 1588167657703,
+    "relativePath": "res/images/icons/bottons/btn4_onclick@3x.png"
   },
   "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
-    "asset": 1587843347518,
-    "meta": 1587843415368,
+    "asset": 1588172885506,
+    "meta": 1588172902228,
     "relativePath": "script/flights.js"
+  },
+  "6d15f882-7309-4b7e-8b82-5f7765dd5a1c": {
+    "asset": 1588172893650,
+    "meta": 1588172902289,
+    "relativePath": "script/userdata.js"
+  },
+  "96835217-dd03-4b1f-9b12-401c37ca6008": {
+    "asset": 1588172899981,
+    "meta": 1588172902320,
+    "relativePath": "script/warehouse.js"
+  },
+  "d4201771-f2de-4a27-802a-48ce50dd8576": {
+    "asset": 1588172963141,
+    "meta": 1588172964653,
+    "relativePath": "script/button_events.js"
+  },
+  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
+    "asset": 1588173070568,
+    "meta": 1588173071988,
+    "relativePath": "script/runway_scene.js"
   }
 }

@@ -15,15 +15,10 @@ cc.Class({
             type:cc.Node,
             default:null
         },
-        level_one:cc.SpriteFrame,
-        level_two:cc.SpriteFrame,
-        level_three:cc.SpriteFrame,
-        level_four:cc.SpriteFrame,
-        level_five:cc.SpriteFrame,
-        level_six:cc.SpriteFrame,
-        level_seven:cc.SpriteFrame,
-        level_eight:cc.SpriteFrame,
-        level_nine:cc.SpriteFrame,
+        warehouse_window:{
+            type:cc.Node,
+            default:null
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -39,16 +34,23 @@ cc.Class({
     update (dt) {
         
     },
-    showallflights(event,customEvenData){
+    showallflights(){
         this.my_flights_window.active = true;   
     },
     closeallflights(){
         this.my_flights_window.active = false;
     },
+    showwarehouse(){
+        this.warehouse_window.active = true;
+    },
+    closewarehouse(){
+        this.warehouse_window.active = false;
+    },
     ownairplanefly(){
         
     },
     fly:function(event,customEventData){
+        this.my_flights_window.active = false;
         var go = 0;
         if(userdata.lefts.leftfuel>=customEventData.fuel&&userdata.lefts.leftpassenger>=customEventData.passenger){
             for(var o in userdata.airplanedata){
@@ -69,5 +71,8 @@ cc.Class({
         if(go == 0){
             console.log("You dont have landing airplane");//here can make a new window
         }
+    },
+    sellairplane(event,customEventData){
+        userdata.airplanedata.splice(customEventData.n,1);
     }
 });
