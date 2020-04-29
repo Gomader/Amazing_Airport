@@ -22,6 +22,18 @@ cc.Class({
     warehouse_window: {
       type: cc.Node,
       "default": null
+    },
+    activeflights: {
+      type: cc.Node,
+      "default": null
+    },
+    flights: {
+      type: cc.Node,
+      "default": null
+    },
+    warning_window: {
+      type: cc.Node,
+      "default": null
     }
   },
   // LIFE-CYCLE CALLBACKS:
@@ -30,6 +42,13 @@ cc.Class({
   update: function update(dt) {},
   showallflights: function showallflights() {
     this.my_flights_window.active = true;
+    this.my_flights_window.getChildByName("active").active = false;
+    this.my_flights_window.getChildByName("inner").active = true;
+  },
+  showflying: function showflying() {
+    this.my_flights_window.active = true;
+    this.my_flights_window.getChildByName("inner").active = false;
+    this.my_flights_window.getChildByName("active").active = true;
   },
   closeallflights: function closeallflights() {
     this.my_flights_window.active = false;
@@ -40,7 +59,6 @@ cc.Class({
   closewarehouse: function closewarehouse() {
     this.warehouse_window.active = false;
   },
-  ownairplanefly: function ownairplanefly() {},
   fly: function fly(event, customEventData) {
     this.my_flights_window.active = false;
     var go = 0;
@@ -58,14 +76,30 @@ cc.Class({
           break;
         }
       }
-    } else {}
+    } else {
+      var inner = 'Do not have enough fuel or passengers';
+      this.showwarning(inner);
+    }
 
     if (go == 0) {
-      console.log("You dont have landing airplane"); //here can make a new window
+      var _inner = 'Do not have an avilable plane of the required type.\nBuy a new plane or wait for the current flights to return.';
+      this.showwarning(_inner);
     }
   },
-  sellairplane: function sellairplane(event, customEventData) {
-    userdata.airplanedata.splice(customEventData.n, 1);
+  hidewarning: function hidewarning() {
+    this.warning_window.active = false;
+  },
+  toactive: function toactive() {
+    this.activeflights.active = true;
+    this.flights.active = false;
+  },
+  toflightlist: function toflightlist() {
+    this.flights.active = true;
+    this.activeflights.active = false;
+  },
+  showwarning: function showwarning(inner) {
+    this.warning_window.getChildByName("warning_window").getChildByName("inner").getComponent(cc.Label).string = inner;
+    this.warning_window.active = true;
   }
 });
 

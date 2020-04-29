@@ -43,37 +43,34 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
-
-    start () {
-        var data = userdata.airplanedata;
+    onLoad () {
         var line;
-        for(var o in data){
+        for(var o in userdata.airplanedata){
             let a = cc.instantiate(this.model);
-            if(data[o].level==1){
+            if(userdata.airplanedata[o].level==1){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_one;
-            }else if(data[o].level == 2){
+            }else if(userdata.airplanedata[o].level == 2){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_two;
-            }else if(data[o].level == 3){
+            }else if(userdata.airplanedata[o].level == 3){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_three;
-            }else if(data[o].level == 4){
+            }else if(userdata.airplanedata[o].level == 4){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_four;
-            }else if(data[o].level == 5){
+            }else if(userdata.airplanedata[o].level == 5){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_five;
-            }else if(data[o].level == 6){
+            }else if(userdata.airplanedata[o].level == 6){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_six;
-            }else if(data[o].level == 7){
+            }else if(userdata.airplanedata[o].level == 7){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_seven;
-            }else if(data[o].level == 8){
+            }else if(userdata.airplanedata[o].level == 8){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_eight;
-            }else if(data[o].level == 9){
+            }else if(userdata.airplanedata[o].level == 9){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_nine;
             }
-            a.getChildByName("level").getComponent(cc.Label).string = "Level " + data[o].level.toString();
+            a.getChildByName("level").getComponent(cc.Label).string = "Level " + userdata.airplanedata[o].level.toString();
             var clickEventHandler = new cc.Component.EventHandler();
             clickEventHandler.target = a.getChildByName("sell");
-            clickEventHandler.component = "button_events";
-            clickEventHandler.handler = "flysellairplane";
+            clickEventHandler.component = "warehouse";
+            clickEventHandler.handler = "sellairplane";
             clickEventHandler.customEventData = o;
         
             var button = a.getChildByName("sell").getComponent(cc.Button);
@@ -88,5 +85,15 @@ cc.Class({
         this.node.height = line*430+10;
     },
 
-    // update (dt) {},
+    start () {
+
+    },
+
+    update (dt) {
+    },
+    sellairplane(event,customEventData){
+        event.target.getParent().destroy();
+        userdata.airplanedata.splice(customEventData,1);
+        this.onLoad();
+    },
 });

@@ -1445,8 +1445,8 @@
     "relativePath": "scenes/homepage_scene.fire"
   },
   "b7049ff1-4474-4759-b435-e0a79c81e2f6": {
-    "asset": 1588173028253,
-    "meta": 1588173028267,
+    "asset": 1588189277267,
+    "meta": 1588189277279,
     "relativePath": "scenes/runway_scene.fire"
   },
   "3e2dbe6d-86df-439f-8808-e7bbe7d7f302": {
@@ -2034,29 +2034,69 @@
     "meta": 1588167657703,
     "relativePath": "res/images/icons/bottons/btn4_onclick@3x.png"
   },
-  "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
-    "asset": 1588172885506,
-    "meta": 1588172902228,
-    "relativePath": "script/flights.js"
-  },
   "6d15f882-7309-4b7e-8b82-5f7765dd5a1c": {
     "asset": 1588172893650,
     "meta": 1588172902289,
     "relativePath": "script/userdata.js"
   },
+  "d3d21f83-7892-4f45-a581-f9593b8f0323": {
+    "asset": 1588175442088,
+    "meta": 1588175444044,
+    "relativePath": "res/images/frames/warning_window.png"
+  },
+  "41dbc3d6-3c7b-4dec-b300-c31eeb239996": {
+    "asset": 1588175441927,
+    "meta": 1588175444048,
+    "relativePath": "res/images/frames/warning_window@2x.png"
+  },
+  "aacd4ec9-bb07-4238-bf81-52a093185e7a": {
+    "asset": 1588175441768,
+    "meta": 1588175444061,
+    "relativePath": "res/images/frames/warning_window@3x.png"
+  },
+  "16d7e214-09aa-4d48-889c-0dd889a416a3": {
+    "asset": 1588177579923,
+    "meta": 1588177585070,
+    "relativePath": "res/images/icons/white_pot.png"
+  },
+  "e807a206-8120-4fd4-8317-7fcc3f1bcb1e": {
+    "asset": 1588177579745,
+    "meta": 1588177585072,
+    "relativePath": "res/images/icons/white_pot@2x.png"
+  },
+  "842702a0-8f94-42a7-a411-f49fd69e3793": {
+    "asset": 1588177579585,
+    "meta": 1588177585079,
+    "relativePath": "res/images/icons/white_pot@3x.png"
+  },
+  "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
+    "asset": 1588187990907,
+    "meta": 1588188002688,
+    "relativePath": "script/flights.js"
+  },
+  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
+    "asset": 1588188798827,
+    "meta": 1588188801840,
+    "relativePath": "script/runway_scene.js"
+  },
+  "e7e5390a-3544-4fc8-bf1a-dbb7587c4856": {
+    "asset": 1588189230945,
+    "meta": 1588189232105,
+    "relativePath": "script/lefttime.js"
+  },
   "96835217-dd03-4b1f-9b12-401c37ca6008": {
-    "asset": 1588172899981,
-    "meta": 1588172902320,
+    "asset": 1588191088904,
+    "meta": 1588191090385,
     "relativePath": "script/warehouse.js"
   },
   "d4201771-f2de-4a27-802a-48ce50dd8576": {
-    "asset": 1588172963141,
-    "meta": 1588172964653,
+    "asset": 1588191166932,
+    "meta": 1588191195851,
     "relativePath": "script/button_events.js"
   },
-  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
-    "asset": 1588173070568,
-    "meta": 1588173071988,
-    "relativePath": "script/runway_scene.js"
+  "27a95ae6-3604-4571-a6be-df84b41eb0b0": {
+    "asset": 1588191239885,
+    "meta": 1588191240946,
+    "relativePath": "script/activeflights.js"
   }
 }

@@ -55,11 +55,11 @@ cc.Class({
         for(var o in this.flightlist){
             let a = cc.instantiate(this.scroll);
             a.getChildByName("inners").getChildByName("Destination").getComponent(cc.Label).string = this.flightlist[o].name;
-            let t = (Math.floor(this.flightlist[o].time/60)).toString() + " m " + (this.flightlist[0].time%60).toString() + " s";
+            let t = (Math.floor(this.flightlist[o].time/60)).toString() + " m " + (this.flightlist[o].time%60).toString() + " s";
             a.getChildByName("inners").getChildByName("Time").getComponent(cc.Label).string = t;
-            a.getChildByName("inners").getChildByName("Cost").getChildByName("fuel").getComponent(cc.Label).string = this.flightlist[0].fuel;
-            a.getChildByName("inners").getChildByName("Cost").getChildByName("passenger").getComponent(cc.Label).string = this.flightlist[0].massenger;
-            a.getChildByName("inners").getChildByName("Reward").getChildByName("Reward").getComponent(cc.Label).string = this.flightlist[0].reward;
+            a.getChildByName("inners").getChildByName("Cost").getChildByName("fuel").getComponent(cc.Label).string = this.flightlist[o].fuel;
+            a.getChildByName("inners").getChildByName("Cost").getChildByName("passenger").getComponent(cc.Label).string = this.flightlist[o].passenger;
+            a.getChildByName("inners").getChildByName("Reward").getChildByName("Reward").getComponent(cc.Label).string = this.flightlist[o].reward;
             if(this.flightlist[o].level==1){
                 a.getChildByName("inners").getChildByName("Airplane").getComponent(cc.Sprite).spriteFrame = this.level_one;
             }else if(this.flightlist[o].level==2){

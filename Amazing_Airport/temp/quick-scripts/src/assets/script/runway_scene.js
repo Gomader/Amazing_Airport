@@ -70,6 +70,14 @@ cc.Class({
       type: cc.Label,
       "default": null
     },
+    warning_window: {
+      type: cc.Node,
+      "default": null
+    },
+    flyingairplanes: {
+      type: cc.Node,
+      "default": null
+    },
     maxfuel: cc.Integer,
     maxpassenger: cc.Integer,
     allclock: Object,
@@ -272,6 +280,21 @@ cc.Class({
       this.allclock.passengerclock.runstate = true;
       this.passengerclock.active = true;
     }
+
+    var flys = 0;
+
+    for (var o in userdata.airplanedata) {
+      if (userdata.airplanedata[o].isflying == 'true') {
+        flys += 1;
+      }
+    }
+
+    if (flys != 0) {
+      this.flyingairplanes.active = true;
+      this.flyingairplanes.getChildByName("planes").getComponent(cc.Label).string = flys.toString();
+    } else {
+      this.flyingairplanes.active = false;
+    }
   },
   startclock: function startclock() {
     this.callback = function () {
@@ -328,25 +351,11 @@ cc.Class({
       } else {
         this.time += 1;
       }
-
-      for (var o in userdata.airplanedata) {
-        if (userdata.airplanedata[o].endtime <= Date.parse(new Date()) / 1000) {
-          this.playloadaction(o);
-        }
-      }
     };
 
     this.schedule(function () {
       this.callback();
     }, 1);
-  },
-  playloadaction: function playloadaction(o) {
-    //here I have not write the animation,if done, can let follow codes to be a button
-    userdata.airplanedata[o].destination = 'null';
-    userdata.airplanedata[o].endtime = 0;
-    userdata.airplanedata[o].isflying = 'false';
-    userdata.allfile.money += userdata.airplanedata[o].reward;
-    userdata.airplanedata[o].reward = 0;
   }
 });
 
