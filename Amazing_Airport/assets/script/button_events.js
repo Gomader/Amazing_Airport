@@ -35,6 +35,10 @@ cc.Class({
             type:cc.Node,
             default:null
         },
+        business_flights_window:{
+            type:cc.Node,
+            default:null
+        },
         setting_windows:{
             type:cc.Node,
             default:null
@@ -152,5 +156,11 @@ cc.Class({
     },
     hidebuildings(){
         this.buildings_window.active = false;
+    },
+    showbusiness(){
+        this.business_flights_window.active = true;
+    },
+    hidebusiness(){
+        this.business_flights_window.active = false;
     }
 });

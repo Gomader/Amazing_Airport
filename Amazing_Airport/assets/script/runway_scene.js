@@ -100,6 +100,7 @@ cc.Class({
             leftpassenger:0
         }
         userdata.runwaystate = [false,false];
+        userdata.businesslist = [];
         this.newuser();
         this.backtogame();
     },
@@ -237,7 +238,7 @@ cc.Class({
         if(left.leftfuel >= maxfuel){
             userdata.lefts.leftfuel = left.leftfuel;
         }else{
-            var add = Math.floor(leavetime/60) + left.leftfuel;
+            let add = Math.floor(leavetime/60) + left.leftfuel;
             if(add >= maxfuel){
                 userdata.lefts.leftfuel = maxfuel;
             }else{
@@ -247,7 +248,7 @@ cc.Class({
         if(left.leftpassenger >= maxpassenger){
             userdata.lefts.leftpassenger = left.leftpassenger;
         }else{
-            var add = Math.floor(leavetime/60) + left.leftpassenger;
+            let add = Math.floor(leavetime/60) + left.leftpassenger;
             if(add >= maxpassenger){
                 userdata.lefts.leftpassenger = maxpassenger;
             }else{

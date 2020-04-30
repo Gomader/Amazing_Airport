@@ -8,5 +8,6 @@ cc.Class({
         airplanedata:Array,
         standstate:Array,
         runwaystate:Array,
+        businesslist:Array
     },
 });

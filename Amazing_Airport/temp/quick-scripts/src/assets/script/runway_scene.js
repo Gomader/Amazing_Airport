@@ -101,6 +101,7 @@ cc.Class({
       leftpassenger: 0
     };
     userdata.runwaystate = [false, false];
+    userdata.businesslist = [];
     this.newuser();
     this.backtogame();
   },
@@ -255,12 +256,12 @@ cc.Class({
     if (left.leftpassenger >= maxpassenger) {
       userdata.lefts.leftpassenger = left.leftpassenger;
     } else {
-      var add = Math.floor(leavetime / 60) + left.leftpassenger;
+      var _add = Math.floor(leavetime / 60) + left.leftpassenger;
 
-      if (add >= maxpassenger) {
+      if (_add >= maxpassenger) {
         userdata.lefts.leftpassenger = maxpassenger;
       } else {
-        userdata.lefts.leftpassenger = add;
+        userdata.lefts.leftpassenger = _add;
       }
     }
 

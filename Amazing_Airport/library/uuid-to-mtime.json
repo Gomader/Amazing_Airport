@@ -1445,8 +1445,8 @@
     "relativePath": "scenes/homepage_scene.fire"
   },
   "b7049ff1-4474-4759-b435-e0a79c81e2f6": {
-    "asset": 1588209967996,
-    "meta": 1588209968012,
+    "asset": 1588216955770,
+    "meta": 1588216955788,
     "relativePath": "scenes/runway_scene.fire"
   },
   "3e2dbe6d-86df-439f-8808-e7bbe7d7f302": {
@@ -2109,11 +2109,6 @@
     "meta": 1588193068432,
     "relativePath": "res/images/icons/two_star@3x.png"
   },
-  "6d15f882-7309-4b7e-8b82-5f7765dd5a1c": {
-    "asset": 1588193451968,
-    "meta": 1588193518974,
-    "relativePath": "script/userdata.js"
-  },
   "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
     "asset": 1588195848576,
     "meta": 1588195850262,
@@ -2143,16 +2138,6 @@
     "asset": 1588200994003,
     "meta": 1588201213078,
     "relativePath": "script/shop.js"
-  },
-  "d4201771-f2de-4a27-802a-48ce50dd8576": {
-    "asset": 1588203681830,
-    "meta": 1588203685108,
-    "relativePath": "script/button_events.js"
-  },
-  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
-    "asset": 1588203715943,
-    "meta": 1588203735184,
-    "relativePath": "script/runway_scene.js"
   },
   "8a5dae82-6dd9-46f7-8f68-77eef05b6fa0": {
     "asset": 1588204646829,
@@ -2263,5 +2248,25 @@
     "asset": 1588211874335,
     "meta": 1588211879656,
     "relativePath": "script/activeflights.js"
+  },
+  "d4201771-f2de-4a27-802a-48ce50dd8576": {
+    "asset": 1588212771703,
+    "meta": 1588212773126,
+    "relativePath": "script/button_events.js"
+  },
+  "6d15f882-7309-4b7e-8b82-5f7765dd5a1c": {
+    "asset": 1588214041800,
+    "meta": 1588214149485,
+    "relativePath": "script/userdata.js"
+  },
+  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
+    "asset": 1588214807626,
+    "meta": 1588214815965,
+    "relativePath": "script/runway_scene.js"
+  },
+  "4ec6c760-f532-4305-aacc-96f297825831": {
+    "asset": 1588216838131,
+    "meta": 1588216839351,
+    "relativePath": "script/business.js"
   }
 }

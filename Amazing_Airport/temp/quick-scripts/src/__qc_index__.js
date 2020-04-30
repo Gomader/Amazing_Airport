@@ -1,6 +1,7 @@
 
 require('./assets/script/activeflights');
 require('./assets/script/buildings');
+require('./assets/script/business');
 require('./assets/script/button_events');
 require('./assets/script/creater_user');
 require('./assets/script/flights');
