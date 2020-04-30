@@ -102,7 +102,7 @@ cc.Class({
     };
     userdata.runwaystate = [false, false];
     this.newuser();
-    this.backtogame(cc.sys.localStorage.getItem("stars"));
+    this.backtogame();
   },
   start: function start() {
     this.startclock();
@@ -115,7 +115,7 @@ cc.Class({
     if (this.userid == null) {
       cc.director.loadScene("homepage_scene");
     } else {
-      this.node.runAction(cc.sequence(cc.callFunc(this.downloadAirplaneData, this), cc.callFunc(this.downloadUserData, this), cc.callFunc(this.inits, this)));
+      this.node.runAction(cc.sequence(cc.callFunc(this.downloadAirplaneData, this), cc.callFunc(this.downloadUserData, this), cc.callFunc(this.inits, this), cc.callFunc(this.downloadAchievementData, this)));
     }
   },
   downloadUserData: function downloadUserData() {
@@ -190,9 +190,53 @@ cc.Class({
       }
     };
   },
-  backtogame: function backtogame(stars) {
-    var maxfuel = stars + 10;
-    var maxpassenger = stars * 2 + 20;
+  downloadAchievementData: function downloadAchievementData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=5", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("id=" + this.userid);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
+        if (xhr.responseText != 0) {
+          console.log(1);
+          var res = eval(xhr.responseText);
+          var achievementlist = [];
+
+          for (var i in res) {
+            achievementlist.push(res[i]);
+          }
+
+          userdata.achievement = achievementlist;
+        }
+      }
+    };
+  },
+  uploadAchievementData: function uploadAchievementData() {
+    var list = '';
+
+    for (var o in userdata.achievement) {
+      list += "[" + userdata.achievement[o].join(',') + "],";
+    }
+
+    data = "[" + list + "]";
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=6", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("id=" + this.userid + "&userData=" + data);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
+        if (xhr.responseText == 1) {
+          console.log(1);
+        }
+      }
+    };
+  },
+  backtogame: function backtogame() {
+    var allfile = JSON.parse(cc.sys.localStorage.getItem("allfile"));
+    var maxfuel = allfile.stars * 10 + allfile.buildings.fuel_station * 20;
+    var maxpassenger = allfile.stars * 20 + allfile.buildings.terminal * 20;
     var leavetime = (Date.parse(new Date()) - cc.sys.localStorage.getItem("time")) / 1000;
     var left = JSON.parse(cc.sys.localStorage.getItem("lefts"));
 
@@ -264,8 +308,8 @@ cc.Class({
     this.username.string = userdata.allfile.name;
     this.stars.string = userdata.allfile.stars;
     this.coins.string = userdata.allfile.money;
-    this.maxfuel = userdata.allfile.stars + 10;
-    this.maxpassenger = userdata.allfile.stars * 2 + 20;
+    this.maxfuel = userdata.allfile.stars * 10 + userdata.allfile.buildings.fuel_station * 20;
+    this.maxpassenger = userdata.allfile.stars * 20 + userdata.allfile.buildings.terminal * 20;
     this.fuel.progress = userdata.lefts.leftfuel / this.maxfuel;
     this.fuelnum.string = userdata.lefts.leftfuel.toString() + "/" + this.maxfuel.toString();
     this.passenger.progress = userdata.lefts.leftpassenger / this.maxpassenger;
@@ -299,7 +343,10 @@ cc.Class({
   startclock: function startclock() {
     this.callback = function () {
       cc.sys.localStorage.setItem("time", Date.parse(new Date()));
+      userdata = require('userdata');
       this.uploadAirplaneData();
+      this.uploadAchievementData();
+      this.uploadUserData();
 
       if (this.allclock.fuelclock.runstate == true) {
         this.allclock.fuelclock.timenumber += 1;
@@ -344,9 +391,8 @@ cc.Class({
       }
 
       if (this.time == 60) {
-        this.uploadUserData();
         cc.sys.localStorage.setItem("lefts", JSON.stringify(userdata.lefts));
-        cc.sys.localStorage.setItem("stars", userdata.allfile.stars);
+        cc.sys.localStorage.setItem("allfile", JSON.stringify(userdata.allfile));
         this.time = 0;
       } else {
         this.time += 1;

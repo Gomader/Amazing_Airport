@@ -31,6 +31,18 @@ cc.Class({
       type: cc.Node,
       "default": null
     },
+    shop_window: {
+      type: cc.Node,
+      "default": null
+    },
+    buildings_window: {
+      type: cc.Node,
+      "default": null
+    },
+    setting_windows: {
+      type: cc.Node,
+      "default": null
+    },
     warning_window: {
       type: cc.Node,
       "default": null
@@ -65,25 +77,41 @@ cc.Class({
 
     if (userdata.lefts.leftfuel >= customEventData.fuel && userdata.lefts.leftpassenger >= customEventData.passenger) {
       for (var o in userdata.airplanedata) {
-        if (userdata.airplanedata[o].level == customEventData.level && userdata.airplanedata[o].isflying == "false") {
-          userdata.airplanedata[o].isflying = "true";
+        if (userdata.airplanedata[o].level == customEventData.level && userdata.airplanedata[o].isflying == 'false') {
+          userdata.airplanedata[o].isflying = 'true';
           userdata.airplanedata[o].destination = customEventData.name;
           userdata.airplanedata[o].reward = customEventData.reward;
           userdata.airplanedata[o].endtime = Date.parse(new Date()) / 1000 + customEventData.time;
           userdata.lefts.leftfuel -= customEventData.fuel;
           userdata.lefts.leftpassenger -= customEventData.passenger;
+
+          if (userdata.achievement[customEventData.id][1] == 3) {
+            console.log("r");
+          } else {
+            userdata.achievement[customEventData.id][0] += 1;
+
+            if (userdata.achievement[customEventData.id][0] == 10) {
+              userdata.achievement[customEventData.id][1] += 1;
+              userdata.allfile.stars += 1;
+              userdata.achievement[customEventData.id][0] = 0;
+            }
+          }
+
+          console.log("a");
           go = 1;
           break;
         }
       }
-    } else {
-      var inner = 'Do not have enough fuel or passengers';
-      this.showwarning(inner);
     }
 
     if (go == 0) {
-      var _inner = 'Do not have an avilable plane of the required type.\nBuy a new plane or wait for the current flights to return.';
-      this.showwarning(_inner);
+      if (userdata.lefts.leftfuel < customEventData.fuel || userdata.lefts.leftpassenger < customEventData.passenger) {
+        var inner = 'Do not have enough fuel or passengers';
+        this.showwarning(inner);
+      } else {
+        var _inner = 'Do not have an avilable plane of the required type.\nBuy a new plane or wait for the current flights to return.';
+        this.showwarning(_inner);
+      }
     }
   },
   hidewarning: function hidewarning() {
@@ -100,6 +128,24 @@ cc.Class({
   showwarning: function showwarning(inner) {
     this.warning_window.getChildByName("warning_window").getChildByName("inner").getComponent(cc.Label).string = inner;
     this.warning_window.active = true;
+  },
+  showsetting: function showsetting() {
+    this.setting_windows.active = true;
+  },
+  hidesetting: function hidesetting() {
+    this.setting_windows.active = false;
+  },
+  showshop: function showshop() {
+    this.shop_window.active = true;
+  },
+  hideshop: function hideshop() {
+    this.shop_window.active = false;
+  },
+  showbuildings: function showbuildings() {
+    this.buildings_window.active = true;
+  },
+  hidebuildings: function hidebuildings() {
+    this.buildings_window.active = false;
   }
 });
 

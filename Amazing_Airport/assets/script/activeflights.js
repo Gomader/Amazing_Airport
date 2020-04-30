@@ -86,7 +86,6 @@ cc.Class({
              a.y -= (h-1)*350;
             a.active = true;
             this.node.addChild(a);
-            console.log(1);
             }
         }
         this.node.height = h * 350 + 10;
@@ -100,6 +99,6 @@ cc.Class({
         userdata.allfile.money += userdata.airplanedata[customEventData].reward;
         userdata.airplanedata[customEventData].reward = 0;
         event.target.getParent().destroy();
-        this.onLoad();
+        this.start();
     },
 });

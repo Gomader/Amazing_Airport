@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+var userdata = require('userdata');
+
 cc.Class({
     extends: cc.Component,
 
@@ -38,15 +40,18 @@ cc.Class({
         level_seven:cc.SpriteFrame,
         level_eight:cc.SpriteFrame,
         level_nine:cc.SpriteFrame,
+        one_stars:cc.SpriteFrame,
+        two_stars:cc.SpriteFrame,
+        three_stars:cc.SpriteFrame
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad:function(){
         var list = [
-            {"name":"Traning Flight","time":60,"fuel":4,"passenger":12,"reward":10,"level":1},
-            {"name":"Small Village","time":180,"fuel":8,"passenger":12,"reward":25,"level":2},
-            {"name":"Egypt","time":420,"fuel":10,"passenger":19,"reward":35,"level":3},
+            {"id":0,"name":"Traning Flight","time":60,"fuel":4,"passenger":12,"reward":10,"level":1},
+            {"id":1,"name":"Small Village","time":180,"fuel":8,"passenger":12,"reward":25,"level":2},
+            {"id":2,"name":"Egypt","time":420,"fuel":10,"passenger":19,"reward":35,"level":3},
         ]
         this.flightlist = list;
     },
@@ -79,6 +84,18 @@ cc.Class({
             }else if(this.flightlist[o].level == 9){
                 a.getChildByName("inners").getChildByName("Airplane").getComponent(cc.Sprite).spriteFrame = this.level_nine;
             }
+
+            if(userdata.achievement[o][1]==1){
+                a.getChildByName("star").getComponent(cc.Sprite).spriteFrame = this.one_stars;
+                a.getChildByName("star").active = true;
+            }else if(userdata.achievement[o][1]==2){
+                a.getChildByName("star").getComponent(cc.Sprite).spriteFrame = this.two_stars;
+                a.getChildByName("star").active = true;
+            }else if(userdata.achievement[o][1]==3){
+                a.getChildByName("star").getComponent(cc.Sprite).spriteFrame = this.three_stars;
+                a.getChildByName("star").active = true;
+            }
+
             var clickEventHandler = new cc.Component.EventHandler();
             clickEventHandler.target = a.getChildByName("fly");
             clickEventHandler.component = "button_events";

@@ -48,26 +48,13 @@ cc.Class({
     var userData = {
       name: this.newinput.string,
       stars: 0,
-      money: 0,
-      clean: 100,
-      airplane: {
-        level1: 0,
-        level2: 0,
-        level3: 0,
-        level4: 0,
-        level5: 0,
-        level6: 0,
-        level7: 0,
-        level8: 0,
-        level9: 0
-      },
+      money: 100,
+      airplane: {},
       buildings: {
         uprunway: 1,
         downrunway: 1,
         stand: 1,
-        control_tower: 0,
         ground_tower: 1,
-        repair_center: 0,
         terminal: 1,
         fuel_station: 0
       }

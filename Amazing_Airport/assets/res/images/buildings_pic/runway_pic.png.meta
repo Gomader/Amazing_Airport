@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "54e4339e-846f-44e2-833c-9dd24ce818f9",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 20,
+  "height": 33,
+  "platformSettings": {},
+  "subMetas": {
+    "runway_pic": {
+      "ver": "1.0.4",
+      "uuid": "24caefce-adc2-46f2-a863-4e2d1248f381",
+      "rawTextureUuid": "54e4339e-846f-44e2-833c-9dd24ce818f9",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 20,
+      "height": 33,
+      "rawWidth": 20,
+      "rawHeight": 33,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

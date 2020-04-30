@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "419b1711-31e1-448b-9ac7-f74eb16990d5",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 77,
+  "height": 100,
+  "platformSettings": {},
+  "subMetas": {
+    "fuelstation_pic@3x": {
+      "ver": "1.0.4",
+      "uuid": "425f3e66-4ad5-43b6-ab5e-bcabce0d570c",
+      "rawTextureUuid": "419b1711-31e1-448b-9ac7-f74eb16990d5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 77,
+      "height": 100,
+      "rawWidth": 77,
+      "rawHeight": 100,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
