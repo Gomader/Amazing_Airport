@@ -63,7 +63,7 @@ cc.Class({
   },
   originupload: function originupload(userData) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://140.143.126.73/amazing_airport/amazing_airport.php?module=0", true);
+    xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=0", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("userData=" + JSON.stringify(userData));
 

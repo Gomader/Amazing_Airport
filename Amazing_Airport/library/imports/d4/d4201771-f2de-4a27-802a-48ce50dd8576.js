@@ -101,7 +101,6 @@ cc.Class({
             }
           }
 
-          console.log("a");
           go = 1;
           break;
         }

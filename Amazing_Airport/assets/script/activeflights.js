@@ -39,12 +39,10 @@ cc.Class({
         level_seven:cc.SpriteFrame,
         level_eight:cc.SpriteFrame,
         level_nine:cc.SpriteFrame,
+        data:Array
     },
 
     onLoad:function(){
-    },
-
-    start () {
         var h = 0;
         for(var o in userdata.airplanedata){
             if(userdata.airplanedata[o].isflying=='true'){
@@ -91,7 +89,17 @@ cc.Class({
         this.node.height = h * 350 + 10;
     },
 
-    update (dt) {},
+    start () {
+        
+    },
+
+    update (dt) {
+        if(this.data!=userdata.airplanedata){
+            console.log("here!");
+            this.data = userdata.airplanedata;
+            this.onLoad();
+        }
+    },
     playloadaction(event,customEventData){//here I have not write the animation,if done, can let follow codes to be a button
         userdata.airplanedata[customEventData].destination = 'null';
         userdata.airplanedata[customEventData].endtime = 0;

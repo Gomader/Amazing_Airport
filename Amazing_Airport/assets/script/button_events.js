@@ -104,7 +104,6 @@ cc.Class({
                             userdata.achievement[customEventData.id][0] = 0;
                         }
                     }
-                    console.log("a");
                     go = 1;
                     break;
                 }

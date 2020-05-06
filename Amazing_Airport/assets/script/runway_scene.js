@@ -215,7 +215,7 @@ cc.Class({
         for(var o in userdata.achievement){
             list += "[" + userdata.achievement[o].join(',') + "],";
         }
-        data = "[" + list + "]";
+        var data = "[" + list + "]";
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://www.zhangmingzhe.cn/amazing_airport/amazing_airport.php?module=6", true);
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -231,7 +231,7 @@ cc.Class({
 
     backtogame:function(){
         var allfile = JSON.parse(cc.sys.localStorage.getItem("allfile"));
-        var maxfuel = allfile.stars * 10 + allfile.buildings.fuel_station * 20;
+        var maxfuel = allfile.stars * 10 + allfile.buildings.fuel_station * 20 + 10;
         var maxpassenger = allfile.stars * 20 + allfile.buildings.terminal * 20;
         var leavetime = (Date.parse(new Date()) - cc.sys.localStorage.getItem("time"))/1000;
         var left = JSON.parse(cc.sys.localStorage.getItem("lefts"));
@@ -294,7 +294,7 @@ cc.Class({
         this.username.string = userdata.allfile.name;
         this.stars.string = userdata.allfile.stars;
         this.coins.string = userdata.allfile.money;
-        this.maxfuel = userdata.allfile.stars * 10 + userdata.allfile.buildings.fuel_station * 20;
+        this.maxfuel = userdata.allfile.stars * 10 + userdata.allfile.buildings.fuel_station * 20 + 10;
         this.maxpassenger = userdata.allfile.stars * 20 + userdata.allfile.buildings.terminal * 20;
         this.fuel.progress = userdata.lefts.leftfuel / this.maxfuel;
         this.fuelnum.string = userdata.lefts.leftfuel.toString() + "/" + this.maxfuel.toString();
