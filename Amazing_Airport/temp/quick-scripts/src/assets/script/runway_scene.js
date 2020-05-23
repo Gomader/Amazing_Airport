@@ -109,8 +109,7 @@ cc.Class({
     this.startclock();
     this.node.runAction(cc.fadeIn(1.0));
   },
-  update: function update(dt) {
-    this.showmap();
+  update: function update(dt) {//this.showmap();
   },
   newuser: function newuser() {
     if (this.userid == null) {
@@ -129,6 +128,7 @@ cc.Class({
       if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
         if (xhr.responseText != 0) {
           var data = JSON.parse(xhr.responseText);
+          console.log(data);
           userdata.allfile = data;
         }
       }
@@ -155,6 +155,8 @@ cc.Class({
     xhr.send("id=" + this.userid);
 
     xhr.onreadystatechange = function () {
+      console.log(xhr.status);
+
       if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
         if (xhr.responseText != 0) {
           console.log(1);

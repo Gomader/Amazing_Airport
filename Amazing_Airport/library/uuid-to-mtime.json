@@ -2249,11 +2249,6 @@
     "meta": 1588216839351,
     "relativePath": "script/business.js"
   },
-  "6cadfcea-c82d-46de-8988-8a01407a9c9c": {
-    "asset": 1588218252548,
-    "meta": 1588218329486,
-    "relativePath": "script/creater_user.js"
-  },
   "27a95ae6-3604-4571-a6be-df84b41eb0b0": {
     "asset": 1588274760684,
     "meta": 1588274763743,
@@ -2264,9 +2259,14 @@
     "meta": 1588275085643,
     "relativePath": "script/button_events.js"
   },
+  "6cadfcea-c82d-46de-8988-8a01407a9c9c": {
+    "asset": 1589384500706,
+    "meta": 1589385393092,
+    "relativePath": "script/creater_user.js"
+  },
   "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
-    "asset": 1588275623308,
-    "meta": 1588275632419,
+    "asset": 1590201985702,
+    "meta": 1590201987002,
     "relativePath": "script/runway_scene.js"
   }
 }
