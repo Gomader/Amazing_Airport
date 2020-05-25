@@ -50,6 +50,10 @@ cc.Class({
     warning_window: {
       type: cc.Node,
       "default": null
+    },
+    window: {
+      type: cc.Node,
+      "default": null
     }
   },
   // LIFE-CYCLE CALLBACKS:
@@ -66,14 +70,8 @@ cc.Class({
     this.my_flights_window.getChildByName("inner").active = false;
     this.my_flights_window.getChildByName("active").active = true;
   },
-  closeallflights: function closeallflights() {
-    this.my_flights_window.active = false;
-  },
   showwarehouse: function showwarehouse() {
     this.warehouse_window.active = true;
-  },
-  closewarehouse: function closewarehouse() {
-    this.warehouse_window.active = false;
   },
   fly: function fly(event, customEventData) {
     this.my_flights_window.active = false;
@@ -117,9 +115,6 @@ cc.Class({
       }
     }
   },
-  hidewarning: function hidewarning() {
-    this.warning_window.active = false;
-  },
   toactive: function toactive() {
     this.activeflights.active = true;
     this.flights.active = false;
@@ -127,34 +122,38 @@ cc.Class({
   toflightlist: function toflightlist() {
     this.flights.active = true;
     this.activeflights.active = false;
+    hide();
+    var a = cc.instantiate(this.flights);
+    a.active = true;
   },
   showwarning: function showwarning(inner) {
     this.warning_window.getChildByName("warning_window").getChildByName("inner").getComponent(cc.Label).string = inner;
-    this.warning_window.active = true;
+    var a = cc.instantiate(warning_window);
+    a.active = true;
+    this.window.addChild(a);
   },
   showsetting: function showsetting() {
-    this.setting_windows.active = true;
-  },
-  hidesetting: function hidesetting() {
-    this.setting_windows.active = false;
+    var a = cc.instantiate(this.setting_windows);
+    a.active = true;
+    this.window.addChild(a);
   },
   showshop: function showshop() {
-    this.shop_window.active = true;
-  },
-  hideshop: function hideshop() {
-    this.shop_window.active = false;
+    var a = cc.instantiate(this.shop_window);
+    a.active = true;
+    this.window.addChild(a);
   },
   showbuildings: function showbuildings() {
-    this.buildings_window.active = true;
-  },
-  hidebuildings: function hidebuildings() {
-    this.buildings_window.active = false;
+    var a = cc.instantiate(this.buildings_window);
+    a.active = true;
+    this.window.addChild(a);
   },
   showbusiness: function showbusiness() {
-    this.business_flights_window.active = true;
+    var a = cc.instantiate(this.business_flights_window);
+    a.active = true;
+    this.window.addChild(a);
   },
-  hidebusiness: function hidebusiness() {
-    this.business_flights_window.active = false;
+  hide: function hide() {
+    this.window.destroyAllChildren();
   }
 });
 

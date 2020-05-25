@@ -46,6 +46,10 @@ cc.Class({
         warning_window:{
             type:cc.Node,
             default:null
+        },
+        window:{
+            type:cc.Node,
+            default:null
         }
     },
 
@@ -72,15 +76,8 @@ cc.Class({
         this.my_flights_window.getChildByName("inner").active = false;
         this.my_flights_window.getChildByName("active").active = true;
     },
-    closeallflights(){
-        this.my_flights_window.active = false;
-    },
     showwarehouse(){
         this.warehouse_window.active = true;
-    },
-
-    closewarehouse(){
-        this.warehouse_window.active = false;
     },
     fly:function(event,customEventData){
         this.my_flights_window.active = false;
@@ -120,10 +117,6 @@ cc.Class({
         }
     },
 
-    hidewarning(){
-        this.warning_window.active = false;
-    },
-
     toactive(){
         this.activeflights.active = true;
         this.flights.active = false;
@@ -132,34 +125,39 @@ cc.Class({
     toflightlist(){
         this.flights.active = true;
         this.activeflights.active = false;
+        hide();
+        let a = cc.instantiate(this.flights);
+        a.active = true;
+        
     },
 
     showwarning(inner){
         this.warning_window.getChildByName("warning_window").getChildByName("inner").getComponent(cc.Label).string = inner;
-        this.warning_window.active = true;
+        let a = cc.instantiate(warning_window);
+        a.active = true;
+        this.window.addChild(a);
     },
     showsetting(){
-        this.setting_windows.active = true;
-    },
-    hidesetting(){
-        this.setting_windows.active = false;
+        let a = cc.instantiate(this.setting_windows);
+        a.active = true;
+        this.window.addChild(a);
     },
     showshop(){
-        this.shop_window.active = true;
-    },
-    hideshop(){
-        this.shop_window.active = false;
+        let a = cc.instantiate(this.shop_window);
+        a.active = true;
+        this.window.addChild(a);
     },
     showbuildings(){
-        this.buildings_window.active = true;
-    },
-    hidebuildings(){
-        this.buildings_window.active = false;
+        let a = cc.instantiate(this.buildings_window);
+        a.active = true;
+        this.window.addChild(a);
     },
     showbusiness(){
-        this.business_flights_window.active = true;
+        let a = cc.instantiate(this.business_flights_window);
+        a.active = true;
+        this.window.addChild(a);
     },
-    hidebusiness(){
-        this.business_flights_window.active = false;
+    hide(){
+        this.window.destroyAllChildren();
     }
 });

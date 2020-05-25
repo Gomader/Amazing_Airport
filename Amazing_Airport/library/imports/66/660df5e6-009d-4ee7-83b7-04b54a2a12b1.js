@@ -109,7 +109,8 @@ cc.Class({
     this.startclock();
     this.node.runAction(cc.fadeIn(1.0));
   },
-  update: function update(dt) {//this.showmap();
+  update: function update(dt) {
+    this.showmap();
   },
   newuser: function newuser() {
     if (this.userid == null) {
