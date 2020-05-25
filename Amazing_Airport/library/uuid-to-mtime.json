@@ -1445,8 +1445,8 @@
     "relativePath": "scenes/homepage_scene.fire"
   },
   "b7049ff1-4474-4759-b435-e0a79c81e2f6": {
-    "asset": 1590286805442,
-    "meta": 1590286805456,
+    "asset": 1590391602194,
+    "meta": 1590391602207,
     "relativePath": "scenes/runway_scene.fire"
   },
   "3e2dbe6d-86df-439f-8808-e7bbe7d7f302": {
@@ -1979,11 +1979,6 @@
     "meta": 1587648014940,
     "relativePath": "res/images/icons/bottons/btn3_onclick@3x.png"
   },
-  "210ea619-6e40-4e25-85b8-c9347c4a020e": {
-    "asset": 1587829068503,
-    "meta": 1587829069776,
-    "relativePath": "script/stand.js"
-  },
   "f75c463e-db3e-49eb-aca5-daf81f076652": {
     "asset": 1588166851686,
     "meta": 1588166870240,
@@ -2109,11 +2104,6 @@
     "meta": 1588193068432,
     "relativePath": "res/images/icons/two_star@3x.png"
   },
-  "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
-    "asset": 1588195848576,
-    "meta": 1588195850262,
-    "relativePath": "script/flights.js"
-  },
   "96835217-dd03-4b1f-9b12-401c37ca6008": {
     "asset": 1588198515728,
     "meta": 1588198522200,
@@ -2133,11 +2123,6 @@
     "asset": 1588199614050,
     "meta": 1588199616170,
     "relativePath": "res/images/frames/setting_window@3x.png"
-  },
-  "524bdafa-e1d3-4f14-b81e-ab3205c83d4f": {
-    "asset": 1588200994003,
-    "meta": 1588201213078,
-    "relativePath": "script/shop.js"
   },
   "8a5dae82-6dd9-46f7-8f68-77eef05b6fa0": {
     "asset": 1588204646829,
@@ -2249,11 +2234,6 @@
     "meta": 1588216839351,
     "relativePath": "script/business.js"
   },
-  "27a95ae6-3604-4571-a6be-df84b41eb0b0": {
-    "asset": 1588274760684,
-    "meta": 1588274763743,
-    "relativePath": "script/activeflights.js"
-  },
   "6cadfcea-c82d-46de-8988-8a01407a9c9c": {
     "asset": 1589384500706,
     "meta": 1589385393092,
@@ -2264,9 +2244,39 @@
     "meta": 1590213392555,
     "relativePath": "script/runway_scene.js"
   },
+  "67960f0f-2c7d-48de-99c8-ea7c524d7ab6": {
+    "asset": 1590370742719,
+    "meta": 1590370742720,
+    "relativePath": "animations"
+  },
+  "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
+    "asset": 1590376242511,
+    "meta": 1590376284922,
+    "relativePath": "script/flights.js"
+  },
+  "524bdafa-e1d3-4f14-b81e-ab3205c83d4f": {
+    "asset": 1590381062911,
+    "meta": 1590381063757,
+    "relativePath": "script/shop.js"
+  },
   "d4201771-f2de-4a27-802a-48ce50dd8576": {
-    "asset": 1590325009135,
-    "meta": 1590325022854,
+    "asset": 1590381589995,
+    "meta": 1590381591446,
     "relativePath": "script/button_events.js"
+  },
+  "210ea619-6e40-4e25-85b8-c9347c4a020e": {
+    "asset": 1590383666487,
+    "meta": 1590383667599,
+    "relativePath": "script/stand.js"
+  },
+  "6bb1789c-dde7-478f-b269-ff9e22b85e2b": {
+    "asset": 1590391572511,
+    "meta": 1590391572515,
+    "relativePath": "animations/up_loading.anim"
+  },
+  "27a95ae6-3604-4571-a6be-df84b41eb0b0": {
+    "asset": 1590391585186,
+    "meta": 1590391596700,
+    "relativePath": "script/activeflights.js"
   }
 }

@@ -39,7 +39,11 @@ cc.Class({
         level_seven:cc.SpriteFrame,
         level_eight:cc.SpriteFrame,
         level_nine:cc.SpriteFrame,
-        data:Array
+        data:Array,
+        window:{
+            type:cc.Node,
+            default:null
+        }
     },
 
     onLoad:function(){
@@ -94,19 +98,17 @@ cc.Class({
     },
 
     update (dt) {
-        if(this.data!=userdata.airplanedata){
-            console.log("here!");
-            this.data = userdata.airplanedata;
-            this.onLoad();
-        }
     },
     playloadaction(event,customEventData){//here I have not write the animation,if done, can let follow codes to be a button
+        bill();
+    },
+    bill(){
         userdata.airplanedata[customEventData].destination = 'null';
         userdata.airplanedata[customEventData].endtime = 0;
         userdata.airplanedata[customEventData].isflying = 'false';
         userdata.allfile.money += userdata.airplanedata[customEventData].reward;
         userdata.airplanedata[customEventData].reward = 0;
         event.target.getParent().destroy();
-        this.start();
-    },
+        this.window.distroyAllChildren();
+    }
 });

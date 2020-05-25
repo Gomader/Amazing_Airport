@@ -30,6 +30,10 @@ cc.Class({
             type:cc.Node,
             default:null
         },
+        window:{
+            type:cc.Node,
+            default:null
+        },
         model:{
             type:cc.Node,
             default:null
@@ -49,6 +53,11 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        
+    },
+
+    start () {
+        console.log("hi");
         var good = [
             [{"money":100,"level":1},{"level":1,"isflying":"false","destination":"null","endtime":0,"reward":0}],
             [{"money":250,"level":2},{"level":2,"isflying":"false","destination":"null","endtime":0,"reward":0}],
@@ -61,10 +70,8 @@ cc.Class({
             [{"money":100000,"level":9},{"level":9,"isflying":"false","destination":"null","endtime":0,"reward":0}]
         ]
         this.goods = good;
-    },
-
-    start () {
         for(var o in this.goods){
+            console.log(o)
             let a = cc.instantiate(this.model);
             if(this.goods[o][0].level==1){
                 a.getChildByName("airplane_pic").getComponent(cc.Sprite).spriteFrame = this.level_one;
@@ -124,10 +131,12 @@ cc.Class({
     },
 
     showwarning(inner){
-        this.warning_window.getChildByName("warning_window").getChildByName("inner").getComponent(cc.Label).string = inner;
-        this.warning_window.active = true;
+        let a = cc.instantiate(this.warning_window);
+        a.getChildByName("warning_window").getChildByName("inner").getComponent(cc.Label).string = inner;
+        a.active = true;
+        this.window.addChild(a);
     },
     hidewarning(){
-        this.warning_window.active = false;
+        this.window.destroyAllChidren();
     },
 });

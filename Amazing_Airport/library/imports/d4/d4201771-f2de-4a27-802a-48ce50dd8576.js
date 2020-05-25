@@ -61,20 +61,26 @@ cc.Class({
   start: function start() {},
   update: function update(dt) {},
   showallflights: function showallflights() {
-    this.my_flights_window.active = true;
-    this.my_flights_window.getChildByName("active").active = false;
-    this.my_flights_window.getChildByName("inner").active = true;
+    var a = cc.instantiate(this.my_flights_window);
+    a.active = true;
+    a.getChildByName("active").active = false;
+    a.getChildByName("inner").active = true;
+    this.window.addChild(a);
   },
   showflying: function showflying() {
-    this.my_flights_window.active = true;
-    this.my_flights_window.getChildByName("inner").active = false;
-    this.my_flights_window.getChildByName("active").active = true;
+    var a = cc.instantiate(this.my_flights_window);
+    a.active = true;
+    a.getChildByName("active").active = true;
+    a.getChildByName("inner").active = false;
+    this.window.addChild(a);
   },
   showwarehouse: function showwarehouse() {
-    this.warehouse_window.active = true;
+    var a = cc.instantiate(this.warehouse_window);
+    a.active = true;
+    this.window.addChild(a);
   },
   fly: function fly(event, customEventData) {
-    this.my_flights_window.active = false;
+    this.window.destroyAllChildren();
     var go = 0;
 
     if (userdata.lefts.leftfuel >= customEventData.fuel && userdata.lefts.leftpassenger >= customEventData.passenger) {
@@ -116,15 +122,12 @@ cc.Class({
     }
   },
   toactive: function toactive() {
-    this.activeflights.active = true;
-    this.flights.active = false;
+    this.window.getChildByName("My_flights_window").getChildByName("active").active = true;
+    this.window.getChildByName("My_flights_window").getChildByName("inner").active = false;
   },
   toflightlist: function toflightlist() {
-    this.flights.active = true;
-    this.activeflights.active = false;
-    hide();
-    var a = cc.instantiate(this.flights);
-    a.active = true;
+    this.window.getChildByName("My_flights_window").getChildByName("active").active = false;
+    this.window.getChildByName("My_flights_window").getChildByName("inner").active = true;
   },
   showwarning: function showwarning(inner) {
     this.warning_window.getChildByName("warning_window").getChildByName("inner").getComponent(cc.Label).string = inner;
@@ -133,6 +136,7 @@ cc.Class({
     this.window.addChild(a);
   },
   showsetting: function showsetting() {
+    this.window.destroyAllChildren();
     var a = cc.instantiate(this.setting_windows);
     a.active = true;
     this.window.addChild(a);

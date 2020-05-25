@@ -67,20 +67,26 @@ cc.Class({
         
     },
     showallflights(){
-        this.my_flights_window.active = true;
-        this.my_flights_window.getChildByName("active").active = false;
-        this.my_flights_window.getChildByName("inner").active = true;
+        let a = cc.instantiate(this.my_flights_window);
+        a.active = true;
+        a.getChildByName("active").active = false;
+        a.getChildByName("inner").active = true;
+        this.window.addChild(a);
     },
     showflying(){
-        this.my_flights_window.active = true;
-        this.my_flights_window.getChildByName("inner").active = false;
-        this.my_flights_window.getChildByName("active").active = true;
+        let a = cc.instantiate(this.my_flights_window);
+        a.active = true;
+        a.getChildByName("active").active = true;
+        a.getChildByName("inner").active = false;
+        this.window.addChild(a);
     },
     showwarehouse(){
-        this.warehouse_window.active = true;
+        let a = cc.instantiate(this.warehouse_window);
+        a.active = true;
+        this.window.addChild(a);
     },
     fly:function(event,customEventData){
-        this.my_flights_window.active = false;
+        this.window.destroyAllChildren();
         var go = 0;
         if(userdata.lefts.leftfuel>=customEventData.fuel&&userdata.lefts.leftpassenger>=customEventData.passenger){
             for(var o in userdata.airplanedata){
@@ -118,17 +124,13 @@ cc.Class({
     },
 
     toactive(){
-        this.activeflights.active = true;
-        this.flights.active = false;
+        this.window.getChildByName("My_flights_window").getChildByName("active").active = true;
+        this.window.getChildByName("My_flights_window").getChildByName("inner").active = false;
     },
 
     toflightlist(){
-        this.flights.active = true;
-        this.activeflights.active = false;
-        hide();
-        let a = cc.instantiate(this.flights);
-        a.active = true;
-        
+        this.window.getChildByName("My_flights_window").getChildByName("active").active = false;
+        this.window.getChildByName("My_flights_window").getChildByName("inner").active = true;
     },
 
     showwarning(inner){
@@ -138,6 +140,7 @@ cc.Class({
         this.window.addChild(a);
     },
     showsetting(){
+        this.window.destroyAllChildren();
         let a = cc.instantiate(this.setting_windows);
         a.active = true;
         this.window.addChild(a);
