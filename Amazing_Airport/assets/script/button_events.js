@@ -50,6 +50,10 @@ cc.Class({
         window:{
             type:cc.Node,
             default:null
+        },
+        airplanes:{
+            type:cc.Node,
+            default:null
         }
     },
 

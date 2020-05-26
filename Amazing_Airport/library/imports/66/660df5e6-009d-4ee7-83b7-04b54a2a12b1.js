@@ -129,7 +129,6 @@ cc.Class({
       if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
         if (xhr.responseText != 0) {
           var data = JSON.parse(xhr.responseText);
-          console.log(data);
           userdata.allfile = data;
         }
       }
@@ -156,8 +155,6 @@ cc.Class({
     xhr.send("id=" + this.userid);
 
     xhr.onreadystatechange = function () {
-      console.log(xhr.status);
-
       if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 400) {
         if (xhr.responseText != 0) {
           console.log(1);
@@ -282,18 +279,6 @@ cc.Class({
     }
 
     userdata.standstate = state;
-
-    for (var o in userdata.airplanedata) {
-      if (userdata.airplanedata[o].isflying == 'false') {
-        for (var i = 0; i < stand; i++) {
-          if (userdata.standstate[i] == false) {
-            userdata.standstate[i] == true;
-          } else {
-            continue;
-          }
-        }
-      }
-    }
   },
   showmap: function showmap() {
     this.runway.getChildByName("up").getChildByName(userdata.allfile.buildings.uprunway.toString()).active = true;

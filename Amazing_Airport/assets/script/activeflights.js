@@ -115,7 +115,7 @@ cc.Class({
         for(var o in userdata.runwaystate){
             if(userdata.runwaystate[o]==false && userdata.airplanedata[customEventData].level == userdata.allfile.buildings.uprunway){
                 this.anims(userdata.airplanedata[customEventData].level,o);
-                this.node.runAction(cc.sequence(cc.callFunc(this.anims,userdata.airplanedata[customEventData].level,o),cc.callFunc(this.bill,event,customEventData,o)))
+                this.bill(event,customEventData,o);
                 break;
             }
         }
@@ -148,7 +148,6 @@ cc.Class({
             a.getComponent(cc.Sprite).spriteFrame = this.level_nine;
         }
         a.active = true;
-        let anim = a.getComponent(cc.Animation);
         userdata.runwaystate[runway] = true;
         this.animswindow.addChild(a);
     },
@@ -159,6 +158,6 @@ cc.Class({
         userdata.allfile.money += userdata.airplanedata[customEventData].reward;
         userdata.airplanedata[customEventData].reward = 0;
         event.target.getParent().destroy();
-        this.window.distroyAllChildren();
+        this.window.destroyAllChildren();
     }
 });

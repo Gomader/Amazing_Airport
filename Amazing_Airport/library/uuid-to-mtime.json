@@ -1445,8 +1445,8 @@
     "relativePath": "scenes/homepage_scene.fire"
   },
   "b7049ff1-4474-4759-b435-e0a79c81e2f6": {
-    "asset": 1590391602194,
-    "meta": 1590391602207,
+    "asset": 1590498840023,
+    "meta": 1590498840041,
     "relativePath": "scenes/runway_scene.fire"
   },
   "3e2dbe6d-86df-439f-8808-e7bbe7d7f302": {
@@ -2234,54 +2234,104 @@
     "meta": 1588216839351,
     "relativePath": "script/business.js"
   },
-  "6cadfcea-c82d-46de-8988-8a01407a9c9c": {
-    "asset": 1589384500706,
-    "meta": 1589385393092,
-    "relativePath": "script/creater_user.js"
-  },
-  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
-    "asset": 1590205581595,
-    "meta": 1590213392555,
-    "relativePath": "script/runway_scene.js"
-  },
   "67960f0f-2c7d-48de-99c8-ea7c524d7ab6": {
     "asset": 1590387418186,
     "meta": 1590370742720,
     "relativePath": "animations"
-  },
-  "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
-    "asset": 1590376242511,
-    "meta": 1590376284922,
-    "relativePath": "script/flights.js"
   },
   "524bdafa-e1d3-4f14-b81e-ab3205c83d4f": {
     "asset": 1590381062911,
     "meta": 1590381063757,
     "relativePath": "script/shop.js"
   },
-  "210ea619-6e40-4e25-85b8-c9347c4a020e": {
-    "asset": 1590383666487,
-    "meta": 1590383667599,
-    "relativePath": "script/stand.js"
-  },
   "6bb1789c-dde7-478f-b269-ff9e22b85e2b": {
     "asset": 1590482263504,
     "meta": 1590482263508,
     "relativePath": "animations/up_loading.anim"
   },
+  "210ea619-6e40-4e25-85b8-c9347c4a020e": {
+    "asset": 1590487701911,
+    "meta": 1590488457883,
+    "relativePath": "script/stand.js"
+  },
+  "c564d5bc-5447-4dfd-a4e0-fce40da8db6e": {
+    "asset": 1590489629929,
+    "meta": 1590489629933,
+    "relativePath": "animations/1.anim"
+  },
+  "dc6382fd-609f-4cd3-90f0-b3b2b16d2eac": {
+    "asset": 1590491167209,
+    "meta": 1590491167212,
+    "relativePath": "animations/2.anim"
+  },
   "d4201771-f2de-4a27-802a-48ce50dd8576": {
-    "asset": 1590464363601,
-    "meta": 1590464377428,
+    "asset": 1590493092825,
+    "meta": 1590493202640,
     "relativePath": "script/button_events.js"
   },
+  "23767b0a-f1df-4d53-92b2-427572a11d2f": {
+    "asset": 1590494423714,
+    "meta": 1590494425011,
+    "relativePath": "animations/3.anim"
+  },
+  "ed59133a-5fb7-4670-9dde-021820f5561f": {
+    "asset": 1590494429959,
+    "meta": 1590494431265,
+    "relativePath": "animations/4.anim"
+  },
+  "bf3a30cc-919c-45c5-ac12-97ace1d42615": {
+    "asset": 1590494435897,
+    "meta": 1590494437161,
+    "relativePath": "animations/5.anim"
+  },
+  "b935cb99-7a6a-4a3b-a36b-35eed50508fe": {
+    "asset": 1590495407011,
+    "meta": 1590495407014,
+    "relativePath": "animations/o1.anim"
+  },
+  "1cc9cecb-e4f4-4b89-be1e-26fdff421d21": {
+    "asset": 1590494458016,
+    "meta": 1590494463782,
+    "relativePath": "animations/o2.anim"
+  },
+  "e40abdc5-7b20-45d0-bc12-a9de2352a824": {
+    "asset": 1590494472428,
+    "meta": 1590494474413,
+    "relativePath": "animations/o3.anim"
+  },
+  "ebda42f1-bc8c-4486-8001-40904db26be6": {
+    "asset": 1590494478446,
+    "meta": 1590494480469,
+    "relativePath": "animations/o4.anim"
+  },
+  "ff6ec4fa-bf11-4a25-b966-106f2c868a3a": {
+    "asset": 1590494484207,
+    "meta": 1590494486150,
+    "relativePath": "animations/o5.anim"
+  },
+  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
+    "asset": 1590495435843,
+    "meta": 1590495437265,
+    "relativePath": "script/runway_scene.js"
+  },
+  "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
+    "asset": 1590495766413,
+    "meta": 1590495780557,
+    "relativePath": "script/flights.js"
+  },
   "27a95ae6-3604-4571-a6be-df84b41eb0b0": {
-    "asset": 1590487060125,
-    "meta": 1590487063802,
+    "asset": 1590496244477,
+    "meta": 1590496248376,
     "relativePath": "script/activeflights.js"
   },
   "4b1a65f0-c065-4416-8fc7-ba979c6f3cbe": {
-    "asset": 1590487356125,
-    "meta": 1590487357272,
+    "asset": 1590496546525,
+    "meta": 1590496642015,
     "relativePath": "script/fly.js"
+  },
+  "6cadfcea-c82d-46de-8988-8a01407a9c9c": {
+    "asset": 1590498644467,
+    "meta": 1590498834827,
+    "relativePath": "script/creater_user.js"
   }
 }

@@ -1,0 +1,53 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "2",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 4,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": 2179.174
+        },
+        {
+          "frame": 2,
+          "value": 1610.393
+        },
+        {
+          "frame": 3,
+          "value": 1573.662
+        }
+      ],
+      "y": [
+        {
+          "frame": 2,
+          "value": -139.692
+        },
+        {
+          "frame": 3,
+          "value": -176.423
+        },
+        {
+          "frame": 4,
+          "value": -377.889
+        }
+      ],
+      "angle": [
+        {
+          "frame": 2,
+          "value": -270
+        },
+        {
+          "frame": 3,
+          "value": -180
+        }
+      ]
+    }
+  },
+  "events": []
+}

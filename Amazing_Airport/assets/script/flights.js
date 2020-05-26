@@ -49,7 +49,7 @@ cc.Class({
 
     onLoad:function(){
         var list = [
-            {"id":0,"name":"Traning Flight","time":60,"fuel":4,"passenger":12,"reward":10,"level":1},
+            {"id":0,"name":"Traning Flight","time":60,"fuel":4,"passenger":1,"reward":10,"level":1},
             {"id":1,"name":"Small Village","time":180,"fuel":8,"passenger":12,"reward":25,"level":2},
             {"id":2,"name":"Egypt","time":420,"fuel":10,"passenger":19,"reward":35,"level":3},
         ]

@@ -43,18 +43,18 @@
                 "children": [
                   "scene"
                 ],
-                "height": 792,
+                "height": 734.984375,
                 "type": "panel",
                 "width": 1100.984375
               },
               {
-                "active": 0,
+                "active": 1,
                 "children": [
                   "console",
                   "timeline",
                   "game-window"
                 ],
-                "height": 266,
+                "height": 323,
                 "type": "panel",
                 "width": 1100.984375
               }

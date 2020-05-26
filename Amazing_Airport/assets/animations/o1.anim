@@ -1,0 +1,149 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "o1",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 24.016666666666666,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": 1874.833
+        },
+        {
+          "frame": 2,
+          "value": 1874.833
+        },
+        {
+          "frame": 5,
+          "value": -1192.713
+        },
+        {
+          "frame": 6,
+          "value": -1263.136
+        },
+        {
+          "frame": 7.5,
+          "value": -1263.136
+        },
+        {
+          "frame": 8.516666666666667,
+          "value": -1191.638
+        },
+        {
+          "frame": 14.5,
+          "value": 2184.016
+        },
+        {
+          "frame": 15.5,
+          "value": 2256.173
+        },
+        {
+          "frame": 16.5,
+          "value": 2256.173
+        },
+        {
+          "frame": 17.5,
+          "value": 2213.297
+        },
+        {
+          "frame": 24.016666666666666,
+          "value": -2457.396
+        }
+      ],
+      "y": [
+        {
+          "frame": 0,
+          "value": -372.459
+        },
+        {
+          "frame": 1.5,
+          "value": -139.827
+        },
+        {
+          "frame": 5,
+          "value": -139.827
+        },
+        {
+          "frame": 6,
+          "value": -73.705
+        },
+        {
+          "frame": 7.5,
+          "value": 60.152
+        },
+        {
+          "frame": 8.516666666666667,
+          "value": 128.139
+        },
+        {
+          "frame": 14.5,
+          "value": 128.139
+        },
+        {
+          "frame": 15.5,
+          "value": 176.125
+        },
+        {
+          "frame": 16.5,
+          "value": 340.309
+        },
+        {
+          "frame": 17.5,
+          "value": 373.773
+        }
+      ],
+      "angle": [
+        {
+          "frame": 0,
+          "value": -180
+        },
+        {
+          "frame": 1.5,
+          "value": -180
+        },
+        {
+          "frame": 2,
+          "value": -270
+        },
+        {
+          "frame": 5,
+          "value": -270
+        },
+        {
+          "frame": 6,
+          "value": -360
+        },
+        {
+          "frame": 7.5,
+          "value": -360
+        },
+        {
+          "frame": 8.516666666666667,
+          "value": -450
+        },
+        {
+          "frame": 14.5,
+          "value": -450
+        },
+        {
+          "frame": 15.5,
+          "value": -360
+        },
+        {
+          "frame": 16.5,
+          "value": -360
+        },
+        {
+          "frame": 17.5,
+          "value": -270
+        }
+      ]
+    }
+  },
+  "events": []
+}

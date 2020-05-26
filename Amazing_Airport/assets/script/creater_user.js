@@ -69,7 +69,7 @@ cc.Class({
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status < 400)) {
                 cc.sys.localStorage.setItem('id',xhr.responseText);
-                this.node.runAction(cc.sequence(cc.fadeOut(1.0),cc.director.loadScene("runway_scene")));
+                cc.director.loadScene("runway_scene");
             }
         };
     }
