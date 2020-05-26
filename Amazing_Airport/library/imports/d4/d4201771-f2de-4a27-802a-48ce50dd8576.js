@@ -61,6 +61,7 @@ cc.Class({
   start: function start() {},
   update: function update(dt) {},
   showallflights: function showallflights() {
+    this.hide();
     var a = cc.instantiate(this.my_flights_window);
     a.active = true;
     a.getChildByName("active").active = false;
@@ -68,6 +69,7 @@ cc.Class({
     this.window.addChild(a);
   },
   showflying: function showflying() {
+    this.hide();
     var a = cc.instantiate(this.my_flights_window);
     a.active = true;
     a.getChildByName("active").active = true;
@@ -75,12 +77,13 @@ cc.Class({
     this.window.addChild(a);
   },
   showwarehouse: function showwarehouse() {
+    this.hide();
     var a = cc.instantiate(this.warehouse_window);
     a.active = true;
     this.window.addChild(a);
   },
   fly: function fly(event, customEventData) {
-    this.window.destroyAllChildren();
+    this.hide();
     var go = 0;
 
     if (userdata.lefts.leftfuel >= customEventData.fuel && userdata.lefts.leftpassenger >= customEventData.passenger) {
@@ -136,22 +139,25 @@ cc.Class({
     this.window.addChild(a);
   },
   showsetting: function showsetting() {
-    this.window.destroyAllChildren();
+    this.hide();
     var a = cc.instantiate(this.setting_windows);
     a.active = true;
     this.window.addChild(a);
   },
   showshop: function showshop() {
+    this.hide();
     var a = cc.instantiate(this.shop_window);
     a.active = true;
     this.window.addChild(a);
   },
   showbuildings: function showbuildings() {
+    this.hide();
     var a = cc.instantiate(this.buildings_window);
     a.active = true;
     this.window.addChild(a);
   },
   showbusiness: function showbusiness() {
+    this.hide();
     var a = cc.instantiate(this.business_flights_window);
     a.active = true;
     this.window.addChild(a);

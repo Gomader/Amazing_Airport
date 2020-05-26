@@ -16,6 +16,7 @@ require('./assets/script/business');
 require('./assets/script/button_events');
 require('./assets/script/creater_user');
 require('./assets/script/flights');
+require('./assets/script/fly');
 require('./assets/script/lefttime');
 require('./assets/script/map_move');
 require('./assets/script/radar_animation');

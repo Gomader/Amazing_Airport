@@ -2245,7 +2245,7 @@
     "relativePath": "script/runway_scene.js"
   },
   "67960f0f-2c7d-48de-99c8-ea7c524d7ab6": {
-    "asset": 1590370742719,
+    "asset": 1590387418186,
     "meta": 1590370742720,
     "relativePath": "animations"
   },
@@ -2259,24 +2259,29 @@
     "meta": 1590381063757,
     "relativePath": "script/shop.js"
   },
-  "d4201771-f2de-4a27-802a-48ce50dd8576": {
-    "asset": 1590381589995,
-    "meta": 1590381591446,
-    "relativePath": "script/button_events.js"
-  },
   "210ea619-6e40-4e25-85b8-c9347c4a020e": {
     "asset": 1590383666487,
     "meta": 1590383667599,
     "relativePath": "script/stand.js"
   },
   "6bb1789c-dde7-478f-b269-ff9e22b85e2b": {
-    "asset": 1590391572511,
-    "meta": 1590391572515,
+    "asset": 1590482263504,
+    "meta": 1590482263508,
     "relativePath": "animations/up_loading.anim"
   },
+  "d4201771-f2de-4a27-802a-48ce50dd8576": {
+    "asset": 1590464363601,
+    "meta": 1590464377428,
+    "relativePath": "script/button_events.js"
+  },
   "27a95ae6-3604-4571-a6be-df84b41eb0b0": {
-    "asset": 1590391585186,
-    "meta": 1590391596700,
+    "asset": 1590487060125,
+    "meta": 1590487063802,
     "relativePath": "script/activeflights.js"
+  },
+  "4b1a65f0-c065-4416-8fc7-ba979c6f3cbe": {
+    "asset": 1590487356125,
+    "meta": 1590487357272,
+    "relativePath": "script/fly.js"
   }
 }

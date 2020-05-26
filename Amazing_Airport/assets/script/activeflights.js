@@ -43,6 +43,18 @@ cc.Class({
         window:{
             type:cc.Node,
             default:null
+        },
+        upairplane:{
+            type:cc.Node,
+            default:null
+        },
+        downairplane:{
+            type:cc.Node,
+            default:null
+        },
+        animswindow:{
+            type:cc.Node,
+            default:null
         }
     },
 
@@ -100,9 +112,47 @@ cc.Class({
     update (dt) {
     },
     playloadaction(event,customEventData){//here I have not write the animation,if done, can let follow codes to be a button
-        bill();
+        for(var o in userdata.runwaystate){
+            if(userdata.runwaystate[o]==false && userdata.airplanedata[customEventData].level == userdata.allfile.buildings.uprunway){
+                this.anims(userdata.airplanedata[customEventData].level,o);
+                this.node.runAction(cc.sequence(cc.callFunc(this.anims,userdata.airplanedata[customEventData].level,o),cc.callFunc(this.bill,event,customEventData,o)))
+                break;
+            }
+        }
+        this.bill(event,customEventData);
     },
-    bill(){
+    anims(level,runway){
+        let a;
+        if(runway == 0){
+            a = cc.instantiate(this.upairplane)
+        }else{
+            a = cc.instantiate(this.downairplane)
+        }
+        if(level == 1){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_one;
+        }else if(level == 2){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_two;
+        }else if(level == 3){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_three;
+        }else if(level == 4){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_four;
+        }else if(level == 5){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_five;
+        }else if(level == 6){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_six;
+        }else if(level == 7){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_seven;
+        }else if(level == 8){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_eight;
+        }else if(level == 9){
+            a.getComponent(cc.Sprite).spriteFrame = this.level_nine;
+        }
+        a.active = true;
+        let anim = a.getComponent(cc.Animation);
+        userdata.runwaystate[runway] = true;
+        this.animswindow.addChild(a);
+    },
+    bill(event,customEventData,runway){
         userdata.airplanedata[customEventData].destination = 'null';
         userdata.airplanedata[customEventData].endtime = 0;
         userdata.airplanedata[customEventData].isflying = 'false';

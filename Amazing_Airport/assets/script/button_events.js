@@ -67,6 +67,7 @@ cc.Class({
         
     },
     showallflights(){
+        this.hide();
         let a = cc.instantiate(this.my_flights_window);
         a.active = true;
         a.getChildByName("active").active = false;
@@ -74,6 +75,7 @@ cc.Class({
         this.window.addChild(a);
     },
     showflying(){
+        this.hide();
         let a = cc.instantiate(this.my_flights_window);
         a.active = true;
         a.getChildByName("active").active = true;
@@ -81,12 +83,13 @@ cc.Class({
         this.window.addChild(a);
     },
     showwarehouse(){
+        this.hide();
         let a = cc.instantiate(this.warehouse_window);
         a.active = true;
         this.window.addChild(a);
     },
     fly:function(event,customEventData){
-        this.window.destroyAllChildren();
+        this.hide();
         var go = 0;
         if(userdata.lefts.leftfuel>=customEventData.fuel&&userdata.lefts.leftpassenger>=customEventData.passenger){
             for(var o in userdata.airplanedata){
@@ -140,22 +143,25 @@ cc.Class({
         this.window.addChild(a);
     },
     showsetting(){
-        this.window.destroyAllChildren();
+        this.hide();
         let a = cc.instantiate(this.setting_windows);
         a.active = true;
         this.window.addChild(a);
     },
     showshop(){
+        this.hide();
         let a = cc.instantiate(this.shop_window);
         a.active = true;
         this.window.addChild(a);
     },
     showbuildings(){
+        this.hide();
         let a = cc.instantiate(this.buildings_window);
         a.active = true;
         this.window.addChild(a);
     },
     showbusiness(){
+        this.hide();
         let a = cc.instantiate(this.business_flights_window);
         a.active = true;
         this.window.addChild(a);
