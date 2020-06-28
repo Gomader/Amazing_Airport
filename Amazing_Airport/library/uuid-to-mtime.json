@@ -1450,7 +1450,7 @@
     "relativePath": "scenes/runway_scene.fire"
   },
   "3e2dbe6d-86df-439f-8808-e7bbe7d7f302": {
-    "asset": 1588213244693,
+    "asset": 1590487078035,
     "meta": 1584458328216,
     "relativePath": "script"
   },
@@ -2235,7 +2235,7 @@
     "relativePath": "script/business.js"
   },
   "67960f0f-2c7d-48de-99c8-ea7c524d7ab6": {
-    "asset": 1590387418186,
+    "asset": 1590494486149,
     "meta": 1590370742720,
     "relativePath": "animations"
   },
@@ -2309,11 +2309,6 @@
     "meta": 1590494486150,
     "relativePath": "animations/o5.anim"
   },
-  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
-    "asset": 1590495435843,
-    "meta": 1590495437265,
-    "relativePath": "script/runway_scene.js"
-  },
   "2d483e68-f4e9-4af4-9cbf-485b22fe6d10": {
     "asset": 1590495766413,
     "meta": 1590495780557,
@@ -2333,5 +2328,10 @@
     "asset": 1590498644467,
     "meta": 1590498834827,
     "relativePath": "script/creater_user.js"
+  },
+  "660df5e6-009d-4ee7-83b7-04b54a2a12b1": {
+    "asset": 1592487777420,
+    "meta": 1592487782720,
+    "relativePath": "script/runway_scene.js"
   }
 }
